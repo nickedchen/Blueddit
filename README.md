@@ -4,7 +4,7 @@
 
 # Blueddit
 
-This is ongoing a course project for **`COSC360 - Web Programming`**
+This is a ongoing course project for **`COSC360 - Web Programming`**
 
 ## Description
 Blueddit serves to be online discussion platform where users can share content such as text posts, links, and images, and participate in discussions on a wide variety of topics, similar to Reddit. Users can browse different categories of content posts, and each content category will be called as a `Tag`(may change the name after).
