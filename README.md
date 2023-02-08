@@ -7,18 +7,18 @@
 This is a ongoing course project for **`COSC360 - Web Programming`**
 
 ## Description
-Blueddit serves to be online discussion platform where users can share content such as text posts, links, and images, and participate in discussions on a wide variety of topics, similar to Reddit. Users can browse different categories of content posts, and each content category will be called as a `Tag`(may change the name after).
+Blueddit serves as an online discussion platform where users can share content such as text posts, links, and images, and participate in discussions on a wide variety of topics, similar to Reddit. Users can browse different categories of content posts, and each community in each category is referred to as a `Bubble` (the name may change in the future).
 
 ### Permissions and Access
-**Registered users**: Registered users can `post`, `edit` and `commit` posts and browse through contents on the `front page`. Users can access the `profile page` customize their profile and page settings.
+**Registered users**: Registered users have the ability to `post`, `edit`, and `comment` on posts and browse content on the `front page`. They also have access to their `profile page`, where they can customize their profile and page settings.
 
-**Anonymous users**: Anonymous users can only access the `front pag` and browse other user's posts. Any intention of posting, commenting and clicking the setting/profile tab will direct user to the `registration page`.
+**Anonymous users**: Anonymous users can only access the `front page` and browse other users' posts. Any attempt to post, comment, or access the settings/profile tab will direct the user to the `registration page`.
 
 
 
 ## Upcoming features
 
-Basic functionalities
+#### Basic functionalities
 
 - **Feed Page**: Display a collection of posts that are curated or posted recently on the forum. The page can be divided into sections and refresh dynamically. Contents on this page should only provide titles of the posts, each with a short preview of post description (2-3 lines) and a post image if exists.
 - **Post Page**: Display a single post, along with its details, such as the author, date, and time of creation, number of upvotes and downvotes, and comments. Registered users can add comments to the post, while anonymous users can only view the post and its details.
@@ -31,7 +31,7 @@ Basic functionalities
 - **Search Function**: Provide a search bar or search options to allow users to search for posts based on keywords or categories.
 - **Categories**: Implement categories to categorize posts and make it easier for users to find relevant content.
 
-Advanced functionalities
+#### Advanced functionalities
 
 1. **Upvoting and downvoting**: Allow users to upvote or downvote posts and comments, to indicate their approval or disapproval.
 1. **Notifications**: Provide notifications for users to receive updates on new posts and comments, and to be notified when their posts or comments receive upvotes or downvotes.
