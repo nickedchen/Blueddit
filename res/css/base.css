@@ -5,11 +5,38 @@ body {
 
 body {
   font-size: 14px;
-}
-
-body {
   text-align: left;
   margin: 2em;
+}
+
+/* dark mode */
+
+@media (prefers-color-scheme: dark) {
+
+  body {
+    background: #121212;
+  }
+
+  svg {
+    color : #fff;
+  }
+
+  .link-dark,
+  .text-dark {
+    color: #fff !important;
+  }
+
+  .post {
+    background: #000;
+    color: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+
+  .post {
+    background: #f4f4f4;
+  }
 }
 
 header .nav-link {
@@ -17,14 +44,20 @@ header .nav-link {
   font-weight: 550;
 }
 
-header .btn {
+button  {
   border-radius: 10px;
   background: #00b5ee;
   border: none;
   padding: 0.5em 1.5em;
 }
 
-header.btn span {
+button:hover {
+  background: #017ea4;
+  transition: 400ms;
+}
+
+button span {
+  font-size: 16px;
   font-weight: 550;
 }
 
@@ -34,7 +67,8 @@ header.btn span {
 }
 
 .nav-link.sidebarItems {
-  padding: 0.75em 0em;
+  font-size: 18px;
+  padding: 0.5em 0em;
   font-weight: 500;
 }
 
@@ -44,7 +78,7 @@ header.btn span {
   align-items: center;
   padding: 2em;
   gap: 1em;
-  background: #f4f4f4;
+
   border-radius: 20px;
   margin-bottom: 1em;
 }
@@ -65,13 +99,15 @@ header.btn span {
   font-size: 2.5em;
 }
 
-.dropdown{
+.dropdown {
   display: block;
- text-align: right;
+  text-align: right;
 }
 
-.dropdown .btn{
+.dropdown .btn {
   border-radius: 10px;
   background: grey;
   padding: 0.5em 1.5em;
 }
+
+
