@@ -1,81 +1,85 @@
+<!-- Authentication -->
+
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <title>Sign in to Blueddit</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <title>Sign in to Blueddit</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/res/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap core CSS -->
+  <link href="/res/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Favicons -->
-    <link
-      rel="icon"
-      href="/res/favicon/Logo.svg"
-      sizes="32x32"
-      type="image/svg" />
+  <!-- Favicons -->
+  <link rel="icon" href="/res/favicon/Logo.svg" sizes="32x32" type="image/svg" />
 
-    <!-- Custom styles for this template -->
-    <link href="/res/css/auth.css" rel="stylesheet" />
-  </head>
+  <!-- Custom styles for this template -->
+  <link href="/res/css/auth.css" rel="stylesheet" />
+</head>
 
 
-  <body>
-    <div class="d-flex align-items-center min-vh-100">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <svg width="207" height="207" viewBox="0 0 207 207" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <mask id="mask0_57_379" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="207" height="207">
-            <circle cx="103.5" cy="103.5" r="103.5" fill="#52C2E6"/>
-            </mask>
-            <g mask="url(#mask0_57_379)">
-            <path d="M34.1548 173.5C34.1548 134.916 65.4333 103.638 104.017 103.638C142.601 103.638 173.88 134.916 173.88 173.5V238.059H34.1548V173.5Z" fill="white"/>
-            <rect x="74.52" y="143.656" width="11.385" height="27.7051" rx="5.6925" fill="#454545"/>
-            <rect x="127.305" y="61.567" width="47.6335" height="46.1752" rx="23.0876" fill="#454545"/>
-            <rect x="122.13" y="143.656" width="11.385" height="27.7051" rx="5.6925" fill="#454545"/>
-            </g>
-            </svg>
-            <h1>Welcome to Blueddit</h1>
-            <h5>The front page of everything.</h5>              
-          </div>
+<body>
+  <section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="res/img/banner.svg" alt="login form" class="img-fluid"
+                  style="border-radius: 1rem 0 0 1rem;" />
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
 
-          <div class="col-md-6 pt-5">
-            <main class="form-signin">
-              <form>
-                <div class="form-floating">
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="name@example.com" />
-                  <label for="floatingInput">Email address</label>
+                  <form>
+
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <span class="h1 fw-bold mb-0">Welcome to Blueddit</span>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <span class="h5 text-muted">The frontpage of everything</span>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form2Example17">Email address</label>
+                      <input type="email" id="form2Example17" class="form-control form-control-lg" required />
+                      <div class="invalid-feedback">
+                        Please provide a valid email address.
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form2Example27">Password</label>
+                      <input type="password" id="form2Example27" class="form-control form-control-lg" required />
+                      <div class="invalid-feedback">
+                        Please provide a valid password.
+                      </div>
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-dark btn-lg btn-circle" type="submit">
+                        <span class="fs-4">&rarr;</span>
+                      </button>
+                    </div>
+
+                    <a class="small text-muted" href="#!">Forgot password?</a>
+                    <p class="mb-5 pb-lg-2">Don't have an account? <a href="#">Register here</a></p>
+                    <a href="#!" class="small text-muted">Terms of use.</a>
+                    <a href="#!" class="small text-muted">Privacy policy</a>
+                  </form>
+
                 </div>
-                <div class="form-floating">
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="floatingPassword"
-                    placeholder="Password" />
-                  <label for="floatingPassword">Password</label>
-                </div>
-        
-                <div class="checkbox mb-3">
-                  <label>
-                    <input type="checkbox" value="remember-me" />
-                    Remember me
-                  </label>
-                </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">
-                  Sign in
-                </button>
-              </form>
-            </main>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </section>
+</body>
+
 </html>

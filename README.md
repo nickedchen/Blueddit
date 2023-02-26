@@ -6,17 +6,17 @@
 
 This is a ongoing course project for **`COSC360 - Web Programming`**
 
-Webpage designs on Figma: https://www.figma.com/file/GZYqqk1sMZQ3e82bNPe0B5/Blueddit?node-id=0%3A1&t=lmrhMjvuA7q9unWG-1
+Webpage designs on Figma: <https://www.figma.com/file/GZYqqk1sMZQ3e82bNPe0B5/Blueddit?node-id=0%3A1&t=lmrhMjvuA7q9unWG-1>
 
 ## Description
+
 Blueddit serves as an online discussion platform where users can share content such as text posts, links, and images, and participate in discussions on a wide variety of topics, similar to Reddit. Users can browse different categories of content posts, and each community in each category is referred to as a `Bubble` (the name may change in the future).
 
 ### Permissions and Access
+
 **Registered users**: Registered users have the ability to `post`, `edit`, and `comment` on posts and browse content on the `front page`. They also have access to their `profile page`, where they can customize their profile and page settings.
 
 **Anonymous users**: Anonymous users can only access the `front page` and browse other users' posts. Any attempt to post, comment, or access the settings/profile tab will direct the user to the `registration page`.
-
-
 
 ## Upcoming features
 
@@ -39,7 +39,7 @@ Blueddit serves as an online discussion platform where users can share content s
 1. **Notifications**: Provide notifications for users to receive updates on new posts and comments, and to be notified when their posts or comments receive upvotes or downvotes.
 1. **Responsive Design**: Ensure that the website is optimized for different screen sizes and devices, to provide a consistent and user-friendly experience on all devices.
 
-## Contributors 
+## Contributors
 
 - Mack Schmaltz  [@Time-Vault](https://github.com/Time-Vault)
 - Nick Chen  [@nickedchen](https://github.com/nickedchen)
