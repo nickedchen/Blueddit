@@ -34,7 +34,7 @@
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
 
-                  <form>
+                  <form method="post" action="login.php">
 
                     <div class="d-flex align-items-center mb-3 pb-1">
                       <span class="h1 fw-bold mb-0">Welcome to Blueddit</span>
@@ -46,7 +46,7 @@
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form2Example17">Email address</label>
-                      <input type="email" id="form2Example17" class="form-control form-control-lg" required />
+                      <input type="email" id="user" name="user" class="form-control form-control-lg" required />
                       <div class="invalid-feedback">
                         Please provide a valid email address.
                       </div>
@@ -54,7 +54,7 @@
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form2Example27">Password</label>
-                      <input type="password" id="form2Example27" class="form-control form-control-lg" required />
+                      <input type="password" id="pass" name="pass" class="form-control form-control-lg" required />
                       <div class="invalid-feedback">
                         Please provide a valid password.
                       </div>
