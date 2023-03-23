@@ -20,6 +20,16 @@
   </head>
 
   <body>
+  <?php
+    //Check for login
+    session_start();
+
+    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
+          header('Location: auth.php');
+          die();
+    }
+    ?>
+
     <!-- Navbar -->
 
     <header id="masthead">
