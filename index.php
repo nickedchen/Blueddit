@@ -8,6 +8,7 @@
 <main>
 
   <body>
+
     <!-- Navigation bar -->
     <?php include 'include/navbar.php'; ?>
 
@@ -37,7 +38,7 @@
             exit($output);
           } else {
             //display posts
-            $stmt = $conn->prepare("SELECT post_id, title, link, upvotes FROM Posts ORDER BY post_id DESC LIMIT 10;");
+            $stmt = $conn->prepare("SELECT post_id, title, link, upvotes FROM posts ORDER BY post_id DESC LIMIT 10;");
             $stmt->execute();
             $result = $stmt->get_result();
             $posts = [];
