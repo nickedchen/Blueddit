@@ -7,6 +7,7 @@
 
   <main>
     <body>
+
       <!-- Navigation bar -->
       <?php include 'include/navbar.php'; ?>
 
