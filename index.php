@@ -10,7 +10,7 @@
   <body>
 
     <!-- Navigation bar -->
-    <?php include 'include/navbar.php'; ?>
+    <?php include 'include/navBar.php'; ?>
 
     <!-- Content -->
     <div class="container-fluid">
