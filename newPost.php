@@ -33,7 +33,7 @@
         <div class="container-fluid">
           <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
             <a
-              href="#"
+              href="index.php"
               class="d-flex navbar-brand align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
               <img src="res/favicon/Logo.svg" alt="Logo" width="40" height="40" class="d-inline-block" />
               &nbsp;Blueddit
@@ -41,10 +41,10 @@
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
               <li>
-                <a href="index.html" class="nav-link px-2 link-secondary active">Home</a>
+                <a href="index.php" class="nav-link px-2 link-secondary active">Home</a>
               </li>
-              <li><a href="discover.html" class="nav-link px-2 link-dark">Discover</a></li>
-              <li><a href="trending.html" class="nav-link px-2 link-dark">Trending</a></li>
+              <li><a href="discover.php" class="nav-link px-2 link-dark">Discover</a></li>
+              <li><a href="trending.php" class="nav-link px-2 link-dark">Trending</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
@@ -95,8 +95,8 @@
                   <strong>Ted</strong>
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                  <li><a class="dropdown-item" href="/settings.html">Settings</a></li>
-                  <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
+                  <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                  <li><a class="dropdown-item" href="profile.html">Profile</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="/auth.html">Sign out</a></li>
                 </ul>

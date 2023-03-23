@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" href="res/favicon/Logo.svg" sizes="180x180" />
 
     <!-- Favicons -->
-    <link rel="icon" href="res/favicon/Logo.svg" sizes="32x32" type="image/svg" />
+    <link rel="icon" href="/res/favicon/Logo.svg" sizes="32x32" type="image/svg" />
 
     <!-- Bootstrap CSS -->
     <link href="res/bootstrap/bootstrap.min.css" rel="stylesheet" />
@@ -33,7 +33,7 @@
         <div class="container-fluid">
           <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
             <a
-              href="/"
+              href="#"
               class="d-flex navbar-brand align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
               <img src="res/favicon/Logo.svg" alt="Logo" width="40" height="40" class="d-inline-block" />
               &nbsp;Blueddit
@@ -41,10 +41,10 @@
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
               <li>
-                <a href="index.html" class="nav-link px-2 link-dark">Home</a>
+                <a href="index.php" class="nav-link px-2 link-secondary active">Home</a>
               </li>
-              <li><a href="discover.html" class="nav-link px-2 link-dark">Discover</a></li>
-              <li><a href="trending.html" class="nav-link px-2 link-secondary active">Trending</a></li>
+              <li><a href="discover.php" class="nav-link px-2 link-dark">Discover</a></li>
+              <li><a href="trending.php" class="nav-link px-2 link-dark">Trending</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
@@ -53,9 +53,11 @@
                   d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm-8 6a8 8 0 1 1 14.32 4.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387A8 8 0 0 1 2 10z" />
               </svg>
               &nbsp;
-              <button type="button" class="text-white text-center">
-                <span>+&nbsp;Post</span>
-              </button>
+              <a href="newPost.php" id="postButton">
+                <button type="button" class="text-white text-center">
+                  <span>+&nbsp;Post</span>
+                </button>
+              </a>
             </div>
           </header>
         </div>
@@ -101,7 +103,7 @@
                   <li><a class="dropdown-item" href="settings.html">Settings</a></li>
                   <li><a class="dropdown-item" href="profile.html">Profile</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="auth.html">Sign out</a></li>
+                  <li><a class="dropdown-item" href="/auth.html">Sign out</a></li>
                 </ul>
               </div>
             </div>
@@ -110,7 +112,6 @@
           <!-- Posts -->
 
           <div class="col-md-6 overflow-auto">
-            
             <div class="post">
               <img src="res/img/p1.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
               <div class="content">

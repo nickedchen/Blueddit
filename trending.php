@@ -33,7 +33,7 @@
         <div class="container-fluid">
           <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
             <a
-              href="/"
+              href="index.php"
               class="d-flex navbar-brand align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
               <img src="res/favicon/Logo.svg" alt="Logo" width="40" height="40" class="d-inline-block" />
               &nbsp;Blueddit
@@ -41,10 +41,10 @@
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
               <li>
-                <a href="index.html" class="nav-link px-2 link-dark">Home</a>
+                <a href="index.php" class="nav-link px-2 link-dark">Home</a>
               </li>
-              <li><a href="discover.html" class="nav-link px-2 link-secondary active">Discover</a></li>
-              <li><a href="trending.html" class="nav-link px-2 link-dark">Trending</a></li>
+              <li><a href="discover.php" class="nav-link px-2 link-dark">Discover</a></li>
+              <li><a href="trending.php" class="nav-link px-2 link-secondary active">Trending</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
@@ -98,10 +98,10 @@
                   <strong>Ted</strong>
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                  <li><a class="dropdown-item" href="/settings.html">Settings</a></li>
-                  <li><a class="dropdown-item" href="/profile.html">Profile</a></li>
+                  <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                  <li><a class="dropdown-item" href="profile.html">Profile</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="/auth.html">Sign out</a></li>
+                  <li><a class="dropdown-item" href="auth.html">Sign out</a></li>
                 </ul>
               </div>
             </div>
@@ -109,23 +109,87 @@
 
           <!-- Posts -->
 
-          <div class="col-md-6">
-
-            <div class="container">
-                <div class="row">
-
-                  <div class="col-md-6 post ">
-                    <span class="post-title">OrangeFanClub</span>
-                    <span class="content">Fresh orange everyday</span>
-                  </div>
-              
-                  <div class="col-md-6 post">
-                    <span class="post-title">OrangeFanClub</span>
-                    <span class="content">Fresh orange everyday</span>
-                  </div>
-              
-                </div>
+          <div class="col-md-6 overflow-auto">
+            
+            <div class="post">
+              <img src="res/img/p1.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+              <div class="content">
+                <span class="post-title">Mom said my new cat is ugly [OC]</span>
+                <span class="post-text">tell her to apologize to your cat. right now.</span>
               </div>
+              <div class="icon">→</div>
+            </div>
+
+            <div class="post">
+              <img src="res/img/p2.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+              <div class="content">
+                <span class="post-title">
+                  He sleeps like the dead. I have an uncontrollable urge to give him rosary beads, just in case…
+                </span>
+                <span class="post-text">Meow father, who art in heaven…</span>
+              </div>
+              <div class="icon">→</div>
+            </div>
+
+            <div class="post">
+              <img src="res/img/p3.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+              <div class="content">
+                <span class="post-title">Oh no, poor kitty ...</span>
+                <span class="post-text">
+                  I don't think he has one orange brain cell. That's one smart orange tabby.
+                </span>
+              </div>
+              <div class="icon">→</div>
+            </div>
+
+            <div class="post">
+              <img src="res/img/p4.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+              <div class="content">
+                <span class="post-title">meet my new study buddy</span>
+                <span class="post-text">Gorgeous! What’s the name?</span>
+              </div>
+              <div class="icon">→</div>
+            </div>
+
+            <div class="post">
+              <img src="res/img/p5.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+              <div class="content">
+                <span class="post-title">
+                  Never had a cat before this little guy. He stole my heart and my thoughts on cats.
+                </span>
+                <span class="post-text">Watch out. They’ll steal your chair too lol.</span>
+              </div>
+              <div class="icon">→</div>
+            </div>
+
+            <div class="post">
+              <img src="res/img/p6.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+              <div class="content">
+                <span class="post-title">She's so cute</span>
+                <span class="post-text">kittens have a way of capturing our hearts.</span>
+              </div>
+              <div class="icon">→</div>
+            </div>
+
+            <div class="post">
+              <img src="res/img/p7.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+              <div class="content">
+                <span class="post-title">
+                  She’s from the streets but I think she’s taking to couches and blankets quite well
+                </span>
+                <span class="post-text">They bites!</span>
+              </div>
+              <div class="icon">→</div>
+            </div>
+
+            <div class="post">
+              <img src="res/img/p8.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+              <div class="content">
+                <span class="post-title">😻❄</span>
+                <span class="post-text">😻😻😻😻😻😻😻😻</span>
+              </div>
+              <div class="icon">→</div>
+            </div>
           </div>
 
           <!-- Panel -->
