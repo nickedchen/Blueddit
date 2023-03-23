@@ -1,16 +1,20 @@
-// Header file
 <?php
+//Check for login
 session_start();
-include "loggedIn.php";
+
 include "connection.php";
-if ($_SESSION['failedLogin'] == 'true') {
-    echo "<script>alert('Login failed');</script>";
-    $_SESSION['failedLogin'] = 'false';
-} else if ($_SESSION['signupFailed'] == 'true') {
+if ($_SESSION['signupFailed'] == 'true') {
     echo "<script>alert('Account already exists.');</script>";
     $_SESSION['failedLogin'] = 'false';
 }
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
+	header('Location: auth.php');
+	die();
+}
+
 ?>
+
 
 <head>
     <meta charset="utf-8" />

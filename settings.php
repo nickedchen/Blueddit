@@ -20,6 +20,7 @@
   </head>
 
   <body>
+
     <!-- Navbar -->
 
     <header id="masthead">
