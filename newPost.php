@@ -1,12 +1,12 @@
 <!-- Home -->
 
 <!DOCTYPE html>
+
 <html lang="en" class="home">
 
 <?php include 'include/head.php'; ?>
 
 <main>
-
   <body>
     <!-- Navigation bar -->
     <?php include 'include/navbar.php'; ?>
