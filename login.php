@@ -1,12 +1,7 @@
 <?php
 	session_start();
-	$servername = "localhost";
-        $username = "51832087";
-        $password = "51832087";
-        $dbname = "db_51832087";
-
-        // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+	include "include/connection.php";
+    
     $email = $_POST['user'];  
     $password = $_POST['pass']; 
       
