@@ -1,8 +1,8 @@
 <?php
 //Check for login
-session_start();
 
 include "connection.php";
+
 if ($_SESSION['signupFailed'] == 'true') {
     echo "<script>alert('Account already exists.');</script>";
     $_SESSION['failedLogin'] = 'false';

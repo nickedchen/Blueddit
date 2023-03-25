@@ -1,35 +1,22 @@
 <?php
 
 // Database connection
+session_start();
 
 // try {
-	$servername = "localhost";
-	$username = "51832087";
-	$password = "51832087";
-	$dbname = "db_51832087";
+// $servername = "localhost";
+// $username = "51832087";
+// $password = "51832087";
+// $dbname = "db_51832087";
 
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
+$servername = "localhost";
+$username = "80611197";
+$password = "80611197";
+$dbname = "db_80611197";
 
-	$connError = mysqli_connect_error();
-	// Check connection
-	// if ($connError != null) {
-	// 	echo "CONNECTION FAILED: " . $connError;
-	// 	die("Connection failed: " . $conn->connect_error);
-	// } else {
-	// 	echo "<h2>CONNECTION SUCCESS</h2>";
-	// 	$result = mysqli_query($conn, "SELECT uname FROM useraccounts");
-	// 	echo "<h3>Retrieved results</h3>";
-	// 	$i = 0;
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-	// 	while ($row = mysqli_fetch_assoc($result)) {
-	// 		echo "<p>Username: " . $row['uname'] . "</p>";
-	// 		$i++;
-	// 	}
-	// }
-// } catch (Exception $e) {
-// 	echo "Not quite";
-// }
+$error = mysqli_connect_error();
 
-// mysqli_close($conn); 
 ?>

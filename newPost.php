@@ -1,4 +1,4 @@
-<!-- Home -->
+<!-- New post -->
 
 <!DOCTYPE html>
 
