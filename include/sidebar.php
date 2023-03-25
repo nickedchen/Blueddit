@@ -1,3 +1,10 @@
+<?php
+    include '.login.php';
+
+    //get username from session
+    $username = $_SESSION['username'];
+?>
+
 <div class="col-md-3">
     <div class="d-flex flex-column flex-shrink-1">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none pb-4">
@@ -24,7 +31,9 @@
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                 id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="res/img/ted.svg" alt="" width="40" height="" class="rounded-circle me-2" />
-                <strong>Ted</strong>
+                <strong>
+                    <?= $user['username'] ?>
+                </strong>
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a class="dropdown-item" href="settings.php">Settings</a></li>

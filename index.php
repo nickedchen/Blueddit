@@ -38,13 +38,13 @@
             exit($output);
           } else {
             //display posts
-            $stmt = $conn->prepare("SELECT post_id, title, link, upvotes FROM posts ORDER BY post_id DESC LIMIT 10;");
+            $stmt = $conn->prepare("SELECT pid, title, link, upvotes FROM posts ORDER BY pid DESC LIMIT 10;");
             $stmt->execute();
             $result = $stmt->get_result();
             $posts = [];
             while ($row = $result->fetch_assoc()) {
               array_push($posts, [
-                'post_id' => $row['post_id'],
+                'pid' => $row['pid'],
                 'title' => $row['title'],
                 'link' => $row['link'],
                 'upvotes' => $row['upvotes']
@@ -53,20 +53,25 @@
             foreach ($posts as $post) { ?>
               <div class="post">
                 <div class="content">
+
                   <span class="post-title">
                     <?= $post['title'] ?>
                   </span>
-                  <div id="<?= $post['post_id'] ?>" class="score">
-                    <a id="up" onclick="vote('up', <?= $post['post_id'] ?>)">&#x25B2;</a>
+
+                  <div id="<?= $post['pif'] ?>" class="upvotes">
+                    <a id="up" onclick="vote('up', <?= $post['pid'] ?>)">&uarr;</a>
                     <p>
                       <?= $post['upvotes'] ?>
                     </p>
-                    <a id="down" onclick="vote('down', <?= $post['post_id'] ?>)">&#x25BC;</a>
+                    <a id="down" onclick="vote('down', <?= $post['pid'] ?>)">&darr;</a>
                   </div>
-                  <p><a href="post.php?pid=<?= $post['post_id'] ?>">Comments</a></p>
+
+                  <p><a href="post.php?pid=<?= $post['pid'] ?>">Comments</a></p>
+
                   <?php if ($_SESSION['isAdmin'] == 1) { ?>
-                    <a style="float:right;" href="deletePost.php?pid=<?= $post['post_id'] ?>">Delete Post</a>
+                    <a style="float:right;" href="deletePost.php?pid=<?= $post['pid'] ?>">Delete Post</a>
                   <?php } ?>
+                  
                 </div>
                 <div class="icon"><a href="http://<?= $post['link'] ?>">→</a></div>
               </div>
