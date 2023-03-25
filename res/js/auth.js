@@ -1,31 +1,77 @@
-const form = document.getElementById("login-form");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
-
-  if (email === "") {
-    alert("Email is required.");
-    return;
+window.addEventListener("DOMContentLoaded", (event) => {
+  var form = document.getElementById("login-form");
+  var form2 = document.getElementById("regis-form");
+  var emailInput = document.getElementById("email");
+  var passwordInput = document.getElementById("pass");
+  var confirmedPasswordInput = document.getElementById("pass2");
+  
+  try{
+  form.addEventListener("submit", function(event) {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+  
+    if (email === "") {
+      event.preventDefault();
+      alert("Email is required.");
+      return;
+    }
+  
+    if (!isValidEmail(email)) {
+      event.preventDefault();
+      alert("Please enter a valid email address.");
+      return;
+    }
+  
+    if (password === "") {
+      event.preventDefault();
+      alert("Password is required.");
+      return;
+    }
+  
+  });} catch(e){
+    console.log(e);
   }
 
-  if (!isValidEmail(email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
+  try{
+  form2.addEventListener("submit", function(event) {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    const password2 = confirmedPasswordInput.value.trim();
+  
+    if (email === "") {
+      event.preventDefault();
+      alert("Email is required.");
+      return;
+    }
+  
+    if (!isValidEmail(email)) {
+      event.preventDefault();
+      alert("Please enter a valid email address.");
+      return;
+    }
+  
+    if (password === "") {
+      event.preventDefault();
+      alert("Password is required.");
+      return;
+    }
 
-  if (password === "") {
-    alert("Password is required.");
-    return;
+    if (!(password === password2)) {
+      event.preventDefault();
+      alert("Passwords do not match.");
+      return;
+    }
+  
+  });}catch(e){
+    console.log(e);
   }
 
 });
 
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
+  
+  
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  
