@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="" />
   <title>Sign in to Blueddit</title>
+  <?php session_start(); ?>
 
   <!-- Bootstrap core CSS -->
   <link href="res/bootstrap/bootstrap.min.css" rel="stylesheet" />
@@ -21,7 +22,14 @@
 
 
 <body>
-  <section class="vh-100">
+  <?php
+  //Check if user just registered
+    if (isset($_SESSION['registered']) && $_SESSION['registered'] == true) {
+      $_SESSION['registered'] = null;
+      echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Account successfully created.');});</script>";
+    }
+  ?>
+  <section class="vh-full">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-xl-10">
@@ -37,7 +45,7 @@
                   <form method="post" action="login.php">
 
                     <div class="d-flex align-items-center mb-3 pb-1">
-                      <span class="h1 fw-bold mb-0">Welcome to Blueddit</span>
+                      <span class="h2 fw-bold mb-0">Welcome to Blueddit</span>
                     </div>
 
                     <div class="d-flex align-items-center mb-3 pb-1">
@@ -67,7 +75,7 @@
                     </div>
 
                     <a class="small text-muted" href="#!">Forgot password?</a>
-                    <p class="mb-5 pb-lg-2">Don't have an account? <a href="#">Register here</a></p>
+                    <p class="mb-5 pb-lg-2">Don't have an account? <a href="registration.php">Register here</a></p>
                     <a href="#!" class="small text-muted">Terms of use.</a>
                     <a href="#!" class="small text-muted">Privacy policy</a>
                   </form>
