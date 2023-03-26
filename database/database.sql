@@ -66,10 +66,11 @@ CREATE TABLE profilepics (
 
 INSERT INTO users (username, password, email, country, totalUpvotes, profilePath, isAdmin, isBanned)
 VALUES
-    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 100, '/profiles/Teddy2014.jpg', 0, 0),
-    ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', 50, '/profiles/Meerkat.jpg', 0, 0),
-    ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', 0, '/profiles/RedPanda.jpg', 1, 0),
-    ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', 0, '/profiles/SeaOtter.jpg', 0, 1);
+    ('Teddy2014', '12345', 'Teddy2014@example.com', 'I hate cosc360', 'Canada', 100, 'res/img/Teddy2014.svg', 0, 0),
+    ('Meerkat', '12345', 'Meerkat@example.com', "Me hehe", 'Canada', 50, 'res/img/Meerkat.svg', 0, 0),
+    ('RedPanda', 'admin', 'RedPanda@example.com', "Yeet", 'USA', 0, 'res/img/RedPanda.svg', 1, 0),
+    ('SeaOtter', '12345', 'SeaOtter@example.com', "We're looking at sea otters", 'Australia', 0, 'res/img/SeaOtter.svg', 0, 1);
+
 
 INSERT INTO sublueddits (sid, title, description)
 VALUES 
@@ -80,10 +81,10 @@ VALUES
 
 INSERT INTO posts (title, content, link, upvotes, userid, sid)
 VALUES 
-    ('I love Oranges', 'I love Oranges, they are so tasty', NULL, 10, 1, 1),
-    ('I love Bananas', 'I love Bananas, they are so tasty', NULL, 5, 2, 2),
-    ('I love Apples', 'I love Apples, they are so tasty', NULL, 2, 3, 3),
-    ('I hate COSC 360', 'I hate COSC 360, it is ridiculous', NULL, 0, 4, 4);
+ ('Hello world! First timer here, what are the good stuff about Blueddit?', 'Is it just Reddit but bluer? XD', NULL, 10, 1, 1),
+('If a colossal banana spun around the Earth', 'That banana is WAAAAAY too close lol. Sorry for stealing a link from Reddit.', 'https://v.redd.it/ihcr7nmh59na1', 5, 2, 2),
+('Me when I wake up at 3 am dying of thirst but my cats are all comfy so I''m not allowed to move', '', 'https://i.redd.it/huli9hzmev381.jpg', 2, 3, 3),
+('Is COSC360 a trap? I''m considering taking it next year', 'any feedback will be appreciated :)', NULL, 0, 4, 4);
 
 -- Sample data for Comments table
 INSERT INTO comments (content, upvotes, userid, pid)
