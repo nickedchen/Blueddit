@@ -11,31 +11,31 @@ DROP TABLE IF EXISTS profilepics CASCADE;
 CREATE TABLE users (
     userid INT UNIQUE NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
     about VARCHAR(500),
     country VARCHAR(50),
-    totalUpvotes INT,
+    totalUpvotes INT DEFAULT 0,
     profilepath VARCHAR(100),
-    isadmin BOOLEAN,
-    isbanned BOOLEAN,
+    isadmin BOOLEAN DEFAULT 0,
+    isbanned BOOLEAN DEFAULT 0,
     PRIMARY KEY(userid)
 );
 
 CREATE TABLE sublueddits (
     sid INT UNIQUE NOT NULL,
-    title VARCHAR(50),
+    title VARCHAR(50) NOT NULL,
     description VARCHAR(500),
     PRIMARY KEY(sid)
 );
 
 CREATE TABLE posts (
     pid INT AUTO_INCREMENT,
-    title VARCHAR(500),
+    title VARCHAR(500) NOT NULL,
     content TEXT,
     link VARCHAR(500),
-    upvotes INT,
-    userid INT,
+    upvotes INT DEFAULT 0,
+    userid INT NOT NULL,
     sid INT,
     PRIMARY KEY(pid),
     FOREIGN KEY(userid) REFERENCES users(userid) ON UPDATE CASCADE ON DELETE NO ACTION,
@@ -45,8 +45,8 @@ CREATE TABLE posts (
 CREATE TABLE comments (
     cid INT UNIQUE NOT NULL AUTO_INCREMENT,
     content TEXT,
-    upvotes INT,
-    userid INT,
+    upvotes INT DEFAULT 0,
+    userid INT NOT NULL,
     pid INT,
     PRIMARY KEY(cid),
     FOREIGN KEY(userid) REFERENCES users(userid) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -64,12 +64,12 @@ CREATE TABLE profilepics (
 
 -- sample data to insert:
 
-INSERT INTO users (username, password, email, country, totalUpvotes, profilePath, isAdmin, isBanned)
+INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isAdmin, isBanned)
 VALUES
-    ('Teddy2014', '12345', 'Teddy2014@example.com', 'I hate cosc360', 'Canada', 100, 'res/img/Teddy2014.svg', 0, 0),
-    ('Meerkat', '12345', 'Meerkat@example.com', "Me hehe", 'Canada', 50, 'res/img/Meerkat.svg', 0, 0),
-    ('RedPanda', 'admin', 'RedPanda@example.com', "Yeet", 'USA', 0, 'res/img/RedPanda.svg', 1, 0),
-    ('SeaOtter', '12345', 'SeaOtter@example.com', "We're looking at sea otters", 'Australia', 0, 'res/img/SeaOtter.svg', 0, 1);
+    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I hate cosc360', 100, 'res/img/Teddy2014.svg', 0, 0),
+    ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0),
+    ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0),
+    ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1);
 
 
 INSERT INTO sublueddits (sid, title, description)
