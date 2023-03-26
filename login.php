@@ -18,6 +18,7 @@ if ($count == 1) {
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $row['username'];
     $_SESSION['userid'] = $row['userid'];
+    $_SESSION['profilePath'] = $row['profilepath'];
     header('Location: index.php');
     die();
 } else {

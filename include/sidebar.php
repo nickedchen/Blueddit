@@ -1,8 +1,8 @@
 <?php
-    //get username from session
+
     include('.login.php');
     $username = $_SESSION['username'];
-    //get user data from database
+    $profilePath = $_SESSION['profilePath'];
 ?>
 
 <div class="col-md-3">
@@ -30,7 +30,7 @@
         <div class="dropdown align-self-baseline mt-5">
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                 id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="res/img/ted.svg" alt="" width="40" height="" class="rounded-circle me-2" />
+                <img src="<?php echo $profilePath ?>" alt="" width="32" height="32" class="rounded-circle me-2" />
                 <strong>
                     <span><?php echo $username ?></span>
                 </strong>
