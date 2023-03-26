@@ -19,19 +19,11 @@
         <!-- Posts -->
         <div class="col-md-6 overflow-auto">
           <div class="post" id="newPost">
-            <p id="postLocation">Posting In: CatMemeCentral</p>
-            <form>
-              <input type="text" name="newTitle" placeholder="Your Title Here!" id="newTitle">
+            <p id="postLocation">What's on your mind?</p>
+            <form method="post" action="postingProcess.php">
+              <input type="text" name="newTitle" placeholder="Your Title Here!" id="newTitle" required>
               <textarea name="newDescription" id="newDescription" cols="20" rows="10"
                 placeholder="Your Description Here!"></textarea>
-              <div id="markdownBar">
-                <span class="markdownContent"><b>B</b></span>
-                <span class="markdownContent"><i>i</i></span>
-                <span class="markdownContent">Link</span>
-                <span class="markdownContent"><i>etc</i></span>
-                <span class="markdownContent"><i>etc</i></span>
-                <span class="markdownContent" id="lastMarkdown"><i>etc</i></span>
-              </div>
               <button type="submit" class="text-white text-center">
                 <span>Post It!</span>
               </button>

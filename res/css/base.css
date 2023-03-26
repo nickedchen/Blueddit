@@ -31,11 +31,6 @@ body {
     color: #fff;
   }
 
-  input,
-  textarea {
-    background: #a6a6a6;
-  }
-
   header .nav-link:hover {
     color: #000;
     font-weight: 600;
@@ -168,26 +163,6 @@ button span {
   margin-bottom: 0.1em;
 }
 
-#markdownBar {
-  width: 100%;
-  height: fit-content;
-  background: #a6a6a6;
-  padding: 0.5em 0.5em;
-  border-radius: 15px;
-  margin-bottom: 0.5em;
-}
-
-.markdownContent {
-  border-right: solid #000 1px;
-  padding-right: 2em;
-  margin-left: 2em;
-  font-size: 1.5em;
-}
-
-#lastMarkdown {
-  border-right: none;
-}
-
 .upvotes {
   display: flex;
   align-items: baseline;
@@ -208,4 +183,8 @@ button span {
 
 .upvotes a#down {
   color: #ffbe1a;
+}
+
+#newPostBtn {
+  background-color: #00b5ee;
 }
