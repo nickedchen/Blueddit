@@ -28,6 +28,14 @@
       $_SESSION['registered'] = null;
       echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Account could not be created.');});</script>";
     }
+    if (isset($_SESSION['emailIssue']) && $_SESSION['emailIssue'] == true) {
+      $_SESSION['emailIssue'] = null;
+      echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Email already in use.');});</script>";
+    }
+    if (isset($_SESSION['userIssue']) && $_SESSION['userIssue'] == true) {
+      $_SESSION['userIssue'] = null;
+      echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Username already in use.');});</script>";
+    }
   ?>
   <section class="vh-full">
     <div class="container py-5">
