@@ -12,6 +12,7 @@ body {
 /* dark mode */
 
 @media (prefers-color-scheme: dark) {
+
   body {
     background: #121212;
   }
@@ -26,13 +27,18 @@ body {
   }
 
   .post {
-    background: #000;
+    background: #222222;
     color: #fff;
   }
 
   input,
   textarea {
     background: #a6a6a6;
+  }
+
+  header .nav-link:hover {
+    color: #000;
+    font-weight: 600;
   }
 }
 
@@ -45,6 +51,12 @@ body {
 header .nav-link {
   font-size: 18px;
   font-weight: 550;
+  transition: 500ms;
+}
+
+header .nav-link:hover {
+  color: #3478f7;
+  font-weight: 600;
 }
 
 button {
@@ -78,12 +90,15 @@ button span {
 .post {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   padding: 2em;
   gap: 1em;
-
   border-radius: 20px;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+}
+
+.post p {
+  margin-bottom: -0.5rem;
 }
 
 .post-title {
@@ -95,11 +110,22 @@ button span {
 .post .content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  gap: 10px; /* adjust the value as needed */
 }
 
 .post .icon {
   margin-left: auto;
   font-size: 2.5em;
+  color: #017ea4;
+
+}
+
+.postlink {
+  background-color: #ffb700;
+  text-decoration: none;
 }
 
 .dropdown {
@@ -164,5 +190,22 @@ button span {
 
 .upvotes {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  font-size: 1.25em;
+}
+
+.upvotes p {
+  margin: 0 0.25em;
+}
+
+.upvotes a#up {
+  color: #2382ff;
+}
+
+.upvotes a#down {
+  color: #ffbe1a;
 }

@@ -17,7 +17,7 @@
   <link rel="icon" href="res/favicon/Logo.svg" sizes="32x32" type="image/svg" />
 
   <!-- Custom styles for this template -->
-  <link href="res/css/auth.css" rel="stylesheet" />
+  <link href="res/css/auth.css" rel="stylesheet"/>
 </head>
 
 
@@ -29,9 +29,8 @@
       echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Account successfully created.');});</script>";
     }
   ?>
-  <section class="vh-full">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="container py-5">
+      <div class="row d-flex justify-content-center align-items-center">
         <div class="col col-xl-10">
           <div class="card" style="border-radius: 1rem;">
             <div class="row g-0">
@@ -49,7 +48,7 @@
                     </div>
 
                     <div class="d-flex align-items-center mb-3 pb-1">
-                      <span class="h5 text-muted">The frontpage of everything</span>
+                      <span class="h6 text-muted">The frontpage of everything.</span>
                     </div>
 
                     <div class="form-outline mb-4">
@@ -74,10 +73,18 @@
                       </button>
                     </div>
 
+                    <!-- for visitors login -->
+                    <div class="mb-4">
+                    <button class="btn btn-outline-dark btn-md" type="button">
+                      <span class="fs-5">Or continute as a visitor</span>
+                    </button>
+                    </div>
+
                     <a class="small text-muted" href="#!">Forgot password?</a>
                     <p class="mb-5 pb-lg-2">Don't have an account? <a href="registration.php">Register here</a></p>
-                    <a href="#!" class="small text-muted">Terms of use.</a>
-                    <a href="#!" class="small text-muted">Privacy policy</a>
+
+                    <!-- copy right -->
+                    <a class="small text-muted" href="#!">© 2023 Blueddit, Inc.</a>
                   </form>
 
                 </div>
@@ -87,7 +94,6 @@
         </div>
       </div>
     </div>
-  </section>
 </body>
 
 </html>
