@@ -1,4 +1,4 @@
-<!-- Home -->
+<!-- Discover -->
 
 <!DOCTYPE html>
 <html lang="en" class="home">
@@ -33,17 +33,27 @@
         <div class="col-md-6">
 
           <div class="container">
-            <div class="row">
+            <div class="flex-row align-items-center">
 
-              <div class="col-md-6 post ">
+              <div class="col-md-12 post">
                 <span class="post-title">OrangeFanClub</span>
                 <span class="content">Fresh orange everyday</span>
               </div>
 
-              <div class="col-md-6 post">
-                <span class="post-title">OrangeFanClub</span>
-                <span class="content">Fresh orange everyday</span>
+              <div class="col-md-12 post ">
+                <span class="post-title">CatMemeCentral</span>
+                <span class="content">We love cat memes</span>
               </div>
+
+              <div class="col-md-12 post ">
+                <span class="post-title">DogMemeCentral</span>
+                <span class="content">We love dog memes</span>
+              </div>
+
+              <div class="col-md-12 post">
+                <span class="post-title">PineapplePlayground</span>
+                <span class="content">Fresh pineapple everyday</span>
+                </div>
 
             </div>
           </div>
@@ -52,9 +62,13 @@
         <!-- Panel -->
         <div class="col-md-3">
           <div class="dropdown">
+            <!-- new post button -->
+            <button class="btn btn-secondary border-1" type="button" data-bs-toggle="modal">
+              New Post
+            </button>
             <button class="btn btn-primary border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              Top
+              Sort
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">New</a></li>

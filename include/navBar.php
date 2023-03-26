@@ -1,3 +1,15 @@
+<?php
+// This file is used to display the navigation bar on the top of the page
+// It is included in every page
+
+$navItems = [
+    'Home' => 'index.php',
+    'Discover' => 'discover.php',
+    'Trending' => 'trending.php'
+];
+?>
+
+
 <header id="masthead">
     <div class="container-fluid">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
@@ -8,11 +20,11 @@
             </a>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li>
-                    <a href="index.php" class="nav-link px-2 link-secondary active">Home</a>
-                </li>
-                <li><a href="discover.php" class="nav-link px-2 link-dark">Discover</a></li>
-                <li><a href="trending.php" class="nav-link px-2 link-dark">Trending</a></li>
+                <?php foreach ($navItems as $navItem => $url) : ?>
+                    <li>
+                        <a href="<?php echo $url; ?>" class="nav-link px-2 <?php if (substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1) == $url) echo 'link-primary active'; else echo 'link-dark'; ?>"><?php echo $navItem; ?></a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
 
             <div class="col-md-3 text-end">
