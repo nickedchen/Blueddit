@@ -13,6 +13,17 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
     die();
 }
 
+//Check for post success
+if (isset($_SESSION['posted']) && $_SESSION['posted'] == true) {
+    unset($_SESSION['posted']);
+    echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Post successfully created.');});</script>";
+}
+
+if (isset($_SESSION['posted']) && $_SESSION['posted'] == false) {
+    unset($_SESSION['posted']);
+    echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Post could not be created.');});</script>";
+}
+
 ?>
 
 <meta charset="utf-8" />
