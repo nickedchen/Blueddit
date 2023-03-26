@@ -1,6 +1,5 @@
 <?php
 
-    include('.login.php');
     $username = $_SESSION['username'];
     $profilePath = $_SESSION['profilePath'];
 ?>
@@ -32,7 +31,7 @@
                 id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="<?php echo $profilePath ?>" alt="" width="32" height="32" class="rounded-circle me-2" />
                 <strong>
-                    <span><?php echo $username ?></span>
+                    <?= $username ?>
                 </strong>
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
