@@ -16,7 +16,7 @@ CREATE TABLE users (
     about VARCHAR(500),
     country VARCHAR(50),
     totalUpvotes INT DEFAULT 0,
-    profilepath VARCHAR(100),
+    profilepath VARCHAR(100) DEFAULT 'res/img/person-circle.svg',
     isadmin BOOLEAN DEFAULT 0,
     isbanned BOOLEAN DEFAULT 0,
     PRIMARY KEY(userid)
