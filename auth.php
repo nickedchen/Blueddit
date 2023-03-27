@@ -25,7 +25,7 @@
   <?php
   //Check if user just registered
     if (isset($_SESSION['registered']) && $_SESSION['registered'] == true) {
-      $_SESSION['registered'] = null;
+      unset($_SESSION['registered']);
       echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Account successfully created.');});</script>";
     }
   ?>

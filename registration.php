@@ -25,8 +25,16 @@
 <body>
   <?php
     if (isset($_SESSION['registered']) && $_SESSION['registered'] == false) {
-      $_SESSION['registered'] = null;
+      unset($_SESSION['registered']);
       echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Account could not be created.');});</script>";
+    }
+    if (isset($_SESSION['emailIssue']) && $_SESSION['emailIssue'] == true) {
+      unset($_SESSION['emailIssue']);
+      echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Email already in use.');});</script>";
+    }
+    if (isset($_SESSION['userIssue']) && $_SESSION['userIssue'] == true) {
+      unset($_SESSION['userIssue']);
+      echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Username already in use.');});</script>";
     }
   ?>
   <section class="vh-full">

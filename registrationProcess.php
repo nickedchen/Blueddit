@@ -6,10 +6,36 @@
     $username = $_POST['username'];  
     $password = $_POST['pass']; 
       
-        //to prevent from mysqli injection  
+        //to prevent form mysqli injection  
     $email = stripcslashes($email);
-    $username = stripcslashes($username);    
+    $email = mysqli_real_escape_string($conn, $email);
+    $username = stripcslashes($username);
+    $username = mysqli_real_escape_string($conn, $username); 
     $password = stripcslashes($password);
+    $password = mysqli_real_escape_string($conn, $password);
+
+    //Check if user already exists
+    $sql = "select * from users where email = '$email'";  
+    $result = mysqli_query($conn, $sql); 
+    $count = mysqli_num_rows($result);  
+          
+    if($count != 0){  
+        $_SESSION['emailIssue'] = true;
+	    header('Location: registration.php');
+        mysqli_close($conn); 
+	    die();
+    }
+
+    $sql = "select * from users where username = '$username'";  
+    $result = mysqli_query($conn, $sql); 
+    $count = mysqli_num_rows($result);  
+          
+    if($count != 0){  
+        $_SESSION['userIssue'] = true;
+	    header('Location: registration.php');
+        mysqli_close($conn); 
+	    die();
+    }
     
     //Insert into database and determine if successful
     $sql = "INSERT INTO users (username, email, password)

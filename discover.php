@@ -8,15 +8,15 @@
 <main>
 
   <body>
-  <?php
+    <?php
     //Check for login
     session_start();
 
     if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
-          header('Location: auth.php');
-          die();
+      header('Location: auth.php');
+      die();
     }
-  ?>
+    ?>
 
     <!-- Navigation bar -->
 
@@ -32,7 +32,7 @@
 
         <div class="col-md-6">
 
-          <div class="container">
+          <!-- <div class="container">
             <div class="flex-row align-items-center">
 
               <div class="col-md-12 post">
@@ -56,16 +56,46 @@
                 </div>
 
             </div>
-          </div>
+          </div> -->
+
+          <!-- sql to get all sublueddits-->
+
+          <?php
+
+          $sql = "SELECT sid, title, description FROM sublueddits;";
+          $stmt = mysqli_prepare($conn, $sql);
+          mysqli_stmt_execute($stmt);
+          mysqli_stmt_bind_result($stmt, $sid, $title, $description);
+          mysqli_stmt_store_result($stmt);
+          $result = mysqli_stmt_num_rows($stmt);
+
+          // if there are no sublueddits
+          if ($result == 0) {
+            echo "<div class='col-md-12 post'>";
+            echo "<span class='post-title'>No sublueddits found</span>";
+            echo "</div>";
+          }
+
+          // if there are sublueddits
+          while (mysqli_stmt_fetch($stmt)) {
+            echo "<div class='col-md-12 post'>";
+            echo "<span class='post-title'>$title</span>";
+            echo "<span class='content'>$description</span>";
+            echo "</div>";
+          }
+          ?>
+
         </div>
 
         <!-- Panel -->
-        <div class="col-md-3">
+        <div class="col-md-3 flex-column">
           <div class="dropdown">
             <!-- new post button -->
-            <button class="btn btn-secondary border-1" type="button" data-bs-toggle="modal">
-              New Post
-            </button>
+            <a href="newPost.php">
+              <button class="btn btn-secondary border-0" id="newPostBtn" type="button">
+                New Post
+              </button>
+            </a>
             <button class="btn btn-primary border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               Sort
