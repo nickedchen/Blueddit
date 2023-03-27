@@ -1,7 +1,9 @@
 <?php
 
+
 $username = $_SESSION['username'];
 $profilePath = $_SESSION['profilePath'];
+
 ?>
 
 <div class="col-md-3">

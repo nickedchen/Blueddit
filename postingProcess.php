@@ -11,12 +11,14 @@
     $title = mysqli_real_escape_string($conn, $title);
     $description = stripcslashes($description);
     $description = mysqli_real_escape_string($conn, $description);
+
     $link = stripcslashes($link);
     $link = mysqli_real_escape_string($conn, $link);
     
     //Insert into database and determine if successful
     //For now all posts go into the subblueddit with ID 1,
     //but this should be changed once subblueddits work. 
+
     $sql = "INSERT INTO posts (title, content, userid, sid, link)
     Values ('$title', '$description', $userid, 1 , '$link')"; 
     $success = mysqli_query($conn, $sql);
