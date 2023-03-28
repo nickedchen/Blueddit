@@ -66,7 +66,7 @@ CREATE TABLE profilepics (
 
 INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isAdmin, isBanned)
 VALUES
-    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I hate cosc360', 100, 'res/img/Teddy2014.svg', 0, 0),
+    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0),
     ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0),
     ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0),
     ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1);
@@ -77,7 +77,7 @@ VALUES
     (1, 'OrangeCentral', 'We love Oranges'),
     (2, 'BananaCentral', 'We love Bananas'),
     (3, 'AppleCentral', 'We love Apples'),
-    (4, 'COSC360Central', 'We hate this course');
+    (4, 'COSC360Central', 'We love this course');
 
 INSERT INTO posts (title, content, link, upvotes, userid, sid)
 VALUES 
@@ -92,4 +92,4 @@ VALUES
     ('I love Oranges too', 10, 1, 1),
     ('I love Bananas too', 5, 2, 2),
     ('I love Apples too', 2, 3, 3),
-    ('I hate COSC 360 too', 0, 4, 4);
+    ('I love COSC 360 too!!!', 0, 4, 4);
