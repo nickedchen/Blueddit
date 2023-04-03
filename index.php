@@ -118,13 +118,13 @@
         <div class="col-md-3">
           <div class="dropdown">
             <a href="newPost.php">
-              <button class="btn btn-secondary border-1" id="newPostBtn" type="button">
+              <button class="btn btn-secondary border-0" id="newPostBtn" type="button">
                 New Post
               </button>
             </a>
             <button class="btn btn-primary border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              Top
+              Sort
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">New</a></li>

@@ -102,6 +102,41 @@ button span {
   line-height: 1em;
 }
 
+/* new post div */
+.post-new {
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 1em;
+  margin-bottom: 1em;
+
+}
+
+.post-new textarea {
+  border-radius: 15px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0.5em;
+  /* inner padding */
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid #ccc;
+}
+
+.post-new textarea:focus {
+  outline: none;
+  border: 1px solid #3478f7;
+}
+
+.post-new button {
+  background: #00b5ee;
+  border: none;
+  padding: 0.5em 1.5em;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 550;
+}
+
 .post .content {
   display: flex;
   flex-direction: column;
@@ -138,27 +173,57 @@ button span {
   flex-direction: column;
   align-items: normal;
   padding: 1em;
+  margin-top: 1em;
 }
 
 #newTitle,
 #newDescription {
-  border-radius: 15px;
+  border-radius: 10px;
   width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-bottom: 0.5em;
 }
 
 #newTitle {
-  font-size: 1.5em;
+  font-size: 1.2em;
   height: fit-content;
+  font-weight: 500;
+  /* inner padding */
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid #ccc;
 }
 
 #newDescription {
-  font-size: 1.25em;
+  font-size: 1.0em;
+  border: 1px solid #ccc;
+  font-weight: 400;
+  /* inner padding */
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+
+}
+
+#newLink {
+  width: 100%;
+  border-radius: 10px;
+  font-size: 1.0em;
+  border: 1px solid #ccc;
+  font-weight: 400;
+  /* inner padding */
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  margin-bottom: 1em;
 }
 
 #postLocation {
+  font-size: 1.25em;
+  font-weight: 500;
+  letter-spacing: -0.03em;
   margin: 0.25em;
   margin-bottom: 0.1em;
 }
