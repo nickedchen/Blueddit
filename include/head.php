@@ -1,6 +1,7 @@
 <?php
-//Check for login
 
+
+//Check for login success
 include "connection.php";
 
 if ($_SESSION['signupFailed'] == 'true') {

@@ -117,12 +117,22 @@
                   </span>
               <?php } ?>
 
-              <div id="<?= $post['pif'] ?>" class="upvotes">
-                <a id="up" onclick="vote('up', <?= $post['pid'] ?>)">&uarr;</a>
+              <div id="<?= $post['pid'] ?>" class="upvotes">
+                <form method="post" action="upvotes.php">
+                  <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
+                  <input type="hidden" name="upvoted" value="1">
+                  <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&uparrow;"
+                    onclick="markArrowClickedUp(this)" />
+                </form>
                 <p>
                   <?= $post['upvotes'] ?>
                 </p>
-                <a id="down" onclick="vote('down', <?= $post['pid'] ?>)">&darr;</a>
+                <form method="post" action="upvotes.php">
+                  <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
+                  <input type="hidden" name="downvoted" value="1">
+                  <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&downarrow;"
+                    onclick="markArrowClickedDown(this)" />
+                </form>
               </div>
 
               <p>Posted by
@@ -150,11 +160,21 @@
                 </span>
 
                 <div id="<?= $comment['cid'] ?>" class="upvotes">
-                  <a id="up" onclick="vote('up', <?= $comment['cid'] ?>)">&uarr;</a>
+                  <form method="post" action="upvotes_comments.php">
+                    <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
+                    <input type="hidden" name="upvoted" value="1">
+                    <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&uparrow;"
+                      onclick="markArrowClickedUp(this)" />
+                  </form>
                   <p>
                     <?= $comment['comment_upvotes'] ?>
                   </p>
-                  <a id="down" onclick="vote('down', <?= $comment['cid'] ?>)">&darr;</a>
+                  <form method="post" action="upvotes_comments.php">
+                    <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
+                    <input type="hidden" name="downvoted" value="1">
+                    <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&downarrow;"
+                      onclick="markArrowClickedDown(this)" />
+                  </form>
                 </div>
 
                 <p>Posted by
@@ -199,5 +219,15 @@
     </div>
   </body>
 </main>
+
+<script>
+  function markArrowClickedUp(arrow) {
+    arrow.classList.toggle('arrow-clicked-up');
+  }
+
+  function markArrowClickedDown(arrow) {
+    arrow.classList.toggle('arrow-clicked-down');
+  }
+</script>
 
 </html>

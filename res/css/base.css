@@ -242,13 +242,15 @@ button span {
   margin: 0 0.25em;
 }
 
-.upvotes a#up {
+.arrow.arrow-clicked-up {
   color: #2382ff;
 }
 
-.upvotes a#down {
+.arrow.arrow-clicked-down {
   color: #ffbe1a;
 }
+
+
 
 #newPostBtn {
   background-color: #00b5ee;

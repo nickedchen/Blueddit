@@ -84,19 +84,28 @@
                   <?php } else if ($post['link'] != null) { ?>
                       <span class="post-link">
                         <a href="<?= $post['link'] ?>" class="text-muted">
-                        ⎋ External Link
+                          ⎋ External Link
                         </a>
                       </span>
                   <?php } ?>
 
 
-                  <div id="<?= $post['pif'] ?>" class="upvotes">
-                    <a id="up" onclick="vote('up', <?= $post['pid'] ?>)">&uarr;</a>
+                  <div id="<?= $post['pid'] ?>" class="upvotes">
+                    <form method="post" action="upvotes.php">
+                      <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
+                      <input type="hidden" name="upvoted" value="1">
+                      <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&uparrow;" onclick="markArrowClickedUp(this)" />
+                    </form>
                     <p>
                       <?= $post['upvotes'] ?>
                     </p>
-                    <a id="down" onclick="vote('down', <?= $post['pid'] ?>)">&darr;</a>
+                    <form method="post" action="upvotes.php">
+                      <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
+                      <input type="hidden" name="downvoted" value="1">
+                      <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
+                    </form>
                   </div>
+
 
                   <p>Posted by
                     <?= $post['username'] ?>
@@ -137,5 +146,16 @@
     </div>
   </body>
 </main>
+
+
+<script>
+  function markArrowClickedUp(arrow) {
+    arrow.classList.toggle('arrow-clicked-up');
+  }
+
+  function markArrowClickedDown(arrow) {
+    arrow.classList.toggle('arrow-clicked-down');
+  }
+</script>
 
 </html>
