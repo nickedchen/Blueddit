@@ -25,15 +25,6 @@
 
         <div class="col-md-6 overflow-auto">
 
-          <!-- <div class="post">
-            <img src="res/img/p1.svg" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
-            <div class="content">
-              <span class="post-title">Mom said my new cat is ugly [OC]</span>
-              <span class="post-text">tell her to apologize to your cat. right now.</span>
-            </div>
-            <div class="icon">→</div>
-          </div> -->
-
           <?php
           //connect to database
           if ($error != null) {
@@ -94,7 +85,7 @@
                     <form method="post" action="upvotes.php">
                       <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                       <input type="hidden" name="upvoted" value="1">
-                      <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&uparrow;" onclick="markArrowClickedUp(this)" />
+                      <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&uparrow;" onclick="markArrowClickedUp(this)" />
                     </form>
                     <p>
                       <?= $post['upvotes'] ?>
@@ -102,10 +93,9 @@
                     <form method="post" action="upvotes.php">
                       <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                       <input type="hidden" name="downvoted" value="1">
-                      <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
+                      <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
                     </form>
                   </div>
-
 
                   <p>Posted by
                     <?= $post['username'] ?>
@@ -116,7 +106,7 @@
                   <?php } ?>
 
                 </div>
-                <div class="icon"><a href="post.php?pid=<?= $post['pid'] ?>">→</a></div>
+                <div class="icon"><a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>">→</a></div>
               </div>
             <?php }
           }

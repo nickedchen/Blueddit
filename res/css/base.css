@@ -35,6 +35,8 @@ body {
     color: #000;
     font-weight: 600;
   }
+
+  
 }
 
 @media (prefers-color-scheme: light) {
@@ -148,10 +150,11 @@ button span {
 
 .post .icon {
   margin-left: auto;
-  font-size: 2.5em;
-  color: #017ea4;
-
+  font-size: 2.2rem;
+  font-weight: 350;
+  margin-top: -0.35em;
 }
+
 
 .postlink {
   background-color: #ffb700;
@@ -250,7 +253,21 @@ button span {
   color: #ffbe1a;
 }
 
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
 
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
 
 #newPostBtn {
   background-color: #00b5ee;

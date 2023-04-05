@@ -121,7 +121,7 @@
                 <form method="post" action="upvotes.php">
                   <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                   <input type="hidden" name="upvoted" value="1">
-                  <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&uparrow;"
+                  <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&uparrow;"
                     onclick="markArrowClickedUp(this)" />
                 </form>
                 <p>
@@ -130,7 +130,7 @@
                 <form method="post" action="upvotes.php">
                   <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                   <input type="hidden" name="downvoted" value="1">
-                  <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&downarrow;"
+                  <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&downarrow;"
                     onclick="markArrowClickedDown(this)" />
                 </form>
               </div>
@@ -163,7 +163,7 @@
                   <form method="post" action="upvotes_comments.php">
                     <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
                     <input type="hidden" name="upvoted" value="1">
-                    <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&uparrow;"
+                    <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&uparrow;"
                       onclick="markArrowClickedUp(this)" />
                   </form>
                   <p>
@@ -172,7 +172,7 @@
                   <form method="post" action="upvotes_comments.php">
                     <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
                     <input type="hidden" name="downvoted" value="1">
-                    <input class="border-0 bg-transparent arrow" type="submit" name="vote" value="&downarrow;"
+                    <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&downarrow;"
                       onclick="markArrowClickedDown(this)" />
                   </form>
                 </div>
