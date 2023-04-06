@@ -4,7 +4,28 @@
 
 <html lang="en" class="home">
 
-<?php include 'include/head.php'; ?>
+<?php include 'include/head.php';
+//get all sublueddits
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$error = mysqli_connect_error();
+
+//to prevent form mysqli injection
+
+$sql = "SELECT * FROM sublueddits;";
+$result = mysqli_prepare($conn, $sql);
+mysqli_stmt_execute($result);
+mysqli_stmt_bind_result($result, $sid, $name, $description);
+
+$sublueddits = array();
+while (mysqli_stmt_fetch($result)) {
+  $sublueddits[] = array(
+    'sid' => $sid,
+    'name' => $name,
+    'description' => $description,
+  );
+}
+
+?>
 
 <main>
 
@@ -29,14 +50,15 @@
 
           <div class="post" id="newPost">
             <p id="postLocation">Create a post:</p>
-
-            <!-- <select class name="sublueddit" id="sublueddit">
-              <option value="sublueddit1">sublueddit1</option>
-              <option value="sublueddit2">sublueddit2</option>
-              <option value="sublueddit3">sublueddit3</option>
-            </select> -->
-
             <form method="post" action="postingProcess.php">
+              <label for="sublueddit" class="ms-1">Choose a sublueddit:</label>
+              <?php
+              echo "<select name='sublueddit' id='sid' class='form-select my-2' required>";
+              foreach ($sublueddits as $sublueddit) {
+                echo "<option value='" . $sublueddit['sid'] . "'>" . $sublueddit['name'] . "</option>";
+              }
+              echo "</select>";
+              ?>
               <input type="text" name="newTitle" placeholder="Place your title here!" id="newTitle" required>
               <textarea name="newDescription" id="newDescription" cols="20" rows="10"
                 placeholder="Your Description Here!"></textarea>

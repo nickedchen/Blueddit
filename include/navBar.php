@@ -28,9 +28,9 @@ $navItems = [
                 <?php endforeach; ?>
             </ul>
 
-            <form class="col-md-3 d-flex" method="GET" action="searchResult.php">
+            <form class="col-md-3 d-flex navbar-form navbar-right" method="GET" role="search" action="searchResult.php">
                 <div class="input-group flex-end text-end" id="search">
-                    <input type="search" class="form-control bg-transparent text-dark" placeholder="Search a post..."
+                    <input type="search" class="form-control bg-transparent text-dark rounded" placeholder="Search a post..."
                         aria-label="Search" name="searchTerm" />
                     <button class="btn btn-outline-secondary" type="submit">
                         <i class="fa fa-search"></i>

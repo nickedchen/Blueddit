@@ -16,14 +16,14 @@
   $pid = mysqli_real_escape_string($conn, $pid);
 
   //get post details
-  $sql = "SELECT p.pid, p.title, p.content, p.upvotes, p.link, u.username, u.profilepath
+  $sql = "SELECT p.pid, p.title, p.content, p.upvotes, p.link, u.username, u.profilepath, p.sid, s.title
   FROM posts p
   INNER JOIN users u ON p.userid = u.userid
+  INNER JOIN sublueddits s ON p.sid = s.sid
   WHERE p.pid = $pid;";
   $result = mysqli_prepare($conn, $sql);
   mysqli_stmt_execute($result);
-  mysqli_stmt_bind_result($result, $pid, $title, $content, $upvotes, $link, $username, $profilepath);
-
+  mysqli_stmt_bind_result($result, $pid, $title, $content, $upvotes, $link, $username, $profilepath, $sid, $stitle);
   while (mysqli_stmt_fetch($result)) {
     $post = array(
       'pid' => $pid,
@@ -33,6 +33,8 @@
       'upvotes' => $upvotes,
       'username' => $username,
       'profilepath' => $profilepath,
+      'sid' => $sid,
+      'stitle' => $stitle,
     );
   }
 
@@ -56,9 +58,6 @@
       'comment_profilepath' => $comment_profilepath,
     );
   }
-
-
-
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
   ?>
@@ -121,8 +120,8 @@
                 <form method="post" action="upvotes.php">
                   <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                   <input type="hidden" name="upvoted" value="1">
-                  <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&uparrow;"
-                    onclick="markArrowClickedUp(this)" />
+                  <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
+                    value="&uparrow;" onclick="markArrowClickedUp(this)" />
                 </form>
                 <p>
                   <?= $post['upvotes'] ?>
@@ -130,14 +129,19 @@
                 <form method="post" action="upvotes.php">
                   <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                   <input type="hidden" name="downvoted" value="1">
-                  <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&downarrow;"
-                    onclick="markArrowClickedDown(this)" />
+                  <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder" type="submit"
+                    name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
                 </form>
               </div>
 
               <p>Posted by
                 <?= $post['username'] ?>
+                in
+                <a href="sublueddit.php?sid=<?= $post['sid'] ?>" class="text-muted">
+                  b/<?= $post['stitle'] ?>
+                </a>
               </p>
+
 
               <?php if ($_SESSION['isAdmin'] == 1) { ?>
                 <a style="float:right;" href="deletePost.php?pid=<?= $post['pid'] ?>">Delete Post</a>
@@ -163,8 +167,8 @@
                   <form method="post" action="upvotes_comments.php">
                     <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
                     <input type="hidden" name="upvoted" value="1">
-                    <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&uparrow;"
-                      onclick="markArrowClickedUp(this)" />
+                    <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
+                      value="&uparrow;" onclick="markArrowClickedUp(this)" />
                   </form>
                   <p>
                     <?= $comment['comment_upvotes'] ?>
@@ -172,8 +176,8 @@
                   <form method="post" action="upvotes_comments.php">
                     <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
                     <input type="hidden" name="downvoted" value="1">
-                    <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&downarrow;"
-                      onclick="markArrowClickedDown(this)" />
+                    <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder" type="submit"
+                      name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
                   </form>
                 </div>
 

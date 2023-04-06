@@ -16,12 +16,14 @@ $stmt->bind_param("i", $cid);
 $stmt->execute();
 $upvoted_users = $stmt->get_result()->fetch_assoc()['upvoted_users'];
 if (strpos($upvoted_users, $userid) !== false) {
+    $_SESSION['duplicatedUpvote'] = True;
     exit(header("Location: " . $_SERVER['HTTP_REFERER']));
 }
 
 // Check if comment is upvoted or downvoted
 $upvoted = isset($_POST['upvoted']);
 $downvoted = isset($_POST['downvoted']);
+$_SESSION['duplicatedUpvote'] = False;
 
 
 if ($upvoted) {

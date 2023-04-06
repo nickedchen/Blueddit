@@ -39,9 +39,10 @@ $searchTerm = $_GET['searchTerm'];
                         exit($output);
                     } else {
                         //display search result
-                        $stmt = $conn->prepare("SELECT p.pid, p.title, p.link, p.upvotes, p.content, u.username, u.profilepath
+                        $stmt = $conn->prepare("SELECT p.pid, p.title, p.link, p.upvotes, p.content, u.username, u.profilepath, p.sid, s.title AS stitle
                     FROM posts p
                     INNER JOIN users u ON p.userid = u.userid
+                    INNER JOIN sublueddits s ON p.sid = s.sid
                     WHERE p.title LIKE '%$searchTerm%'
                     ORDER BY p.pid DESC
                     LIMIT 10;");
@@ -56,7 +57,9 @@ $searchTerm = $_GET['searchTerm'];
                                 'upvotes' => $row['upvotes'],
                                 'content' => $row['content'],
                                 'username' => $row['username'],
-                                'profilepath' => $row['profilepath']
+                                'profilepath' => $row['profilepath'],
+                                'sid' => $row['sid'],
+                                'stitle' => $row['stitle']
                             ]);
                         }
 
@@ -94,27 +97,12 @@ $searchTerm = $_GET['searchTerm'];
                                                 </span>
                                         <?php } ?>
 
-
-                                        <div id="<?= $post['pid'] ?>" class="upvotes">
-                                            <form method="post" action="upvotes.php">
-                                                <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
-                                                <input type="hidden" name="upvoted" value="1">
-                                                <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote"
-                                                    value="&uparrow;" onclick="markArrowClickedUp(this)" />
-                                            </form>
-                                            <p>
-                                                <?= $post['upvotes'] ?>
-                                            </p>
-                                            <form method="post" action="upvotes.php">
-                                                <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
-                                                <input type="hidden" name="downvoted" value="1">
-                                                <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote"
-                                                    value="&downarrow;" onclick="markArrowClickedDown(this)" />
-                                            </form>
-                                        </div>
-
                                         <p>Posted by
                                             <?= $post['username'] ?>
+                                            from 
+                                            <a href="sublueddit.php?sid=<?= $post['sid'] ?>" class="text-muted">
+                                                b/<?= $post['stitle'] ?>
+                                            </a>
                                         </p>
 
                                         <?php if ($_SESSION['isAdmin'] == 1) { ?>

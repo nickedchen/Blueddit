@@ -113,6 +113,18 @@ button span {
 
 }
 
+.post-new select {
+  border-radius: 15px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0.5em;
+  /* inner padding */
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid #ccc;
+}
+
 .post-new textarea {
   border-radius: 15px;
   width: 100%;
@@ -272,3 +284,4 @@ button span {
 #newPostBtn {
   background-color: #00b5ee;
 }
+

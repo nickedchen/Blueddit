@@ -31,12 +31,12 @@
             $output = "<p>Unable to reach the database!</p>";
             exit($output);
           } else {
-            //display posts
-            $stmt = $conn->prepare("SELECT p.pid, p.title, p.link, p.upvotes, p.content, u.username, u.profilepath
-            FROM posts p 
-            INNER JOIN users u ON p.userid = u.userid 
-            ORDER BY p.pid DESC 
-            LIMIT 10;");
+            //display posts and which sublueddit they belong to
+            $stmt = $conn->prepare("SELECT p.pid, p.title, p.link, p.upvotes, p.content, p.sid, s.title AS stitle, u.username, u.profilepath
+            FROM posts p
+            INNER JOIN sublueddits s ON p.sid = s.sid
+            INNER JOIN users u ON p.userid = u.userid
+            ORDER BY p.pid DESC");
             $stmt->execute();
             $result = $stmt->get_result();
             $posts = [];
@@ -47,6 +47,8 @@
                 'link' => $row['link'],
                 'upvotes' => $row['upvotes'],
                 'content' => $row['content'],
+                'sid' => $row['sid'],
+                'stitle' => $row['stitle'],
                 'username' => $row['username'],
                 'profilepath' => $row['profilepath']
               ]);
@@ -85,7 +87,7 @@
                     <form method="post" action="upvotes.php">
                       <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                       <input type="hidden" name="upvoted" value="1">
-                      <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&uparrow;" onclick="markArrowClickedUp(this)" />
+                      <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote" value="&uparrow;" onclick="markArrowClickedUp(this)" />
                     </form>
                     <p>
                       <?= $post['upvotes'] ?>
@@ -93,12 +95,15 @@
                     <form method="post" action="upvotes.php">
                       <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                       <input type="hidden" name="downvoted" value="1">
-                      <input class="border-0 bg-transparent arrow text-dark" type="submit" name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
+                      <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
                     </form>
                   </div>
 
                   <p>Posted by
                     <?= $post['username'] ?>
+                    in
+                    <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">
+                      b/<?= $post['stitle'] ?>
                   </p>
 
                   <?php if ($_SESSION['isAdmin'] == 1) { ?>

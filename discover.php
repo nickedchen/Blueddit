@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html lang="en" class="home">
 
-<?php include 'include/head.php'; ?>
+<head>
+  <title>Discover - Blueddit</title>
+  <?php include 'include/head.php'; ?>
+</head>
 
 <main>
 
@@ -32,31 +35,6 @@
 
         <div class="col-md-6">
 
-          <!-- <div class="container">
-            <div class="flex-row align-items-center">
-
-              <div class="col-md-12 post">
-                <span class="post-title">OrangeFanClub</span>
-                <span class="content">Fresh orange everyday</span>
-              </div>
-
-              <div class="col-md-12 post ">
-                <span class="post-title">CatMemeCentral</span>
-                <span class="content">We love cat memes</span>
-              </div>
-
-              <div class="col-md-12 post ">
-                <span class="post-title">DogMemeCentral</span>
-                <span class="content">We love dog memes</span>
-              </div>
-
-              <div class="col-md-12 post">
-                <span class="post-title">PineapplePlayground</span>
-                <span class="content">Fresh pineapple everyday</span>
-                </div>
-
-            </div>
-          </div> -->
 
           <!-- sql to get all sublueddits-->
 
@@ -75,12 +53,11 @@
             echo "<span class='post-title'>No sublueddits found</span>";
             echo "</div>";
           }
-
           // if there are sublueddits
           while (mysqli_stmt_fetch($stmt)) {
-            echo "<div class='col-md-12 post'>";
-            echo "<span class='post-title'>$title</span>";
-            echo "<span class='content'>$description</span>";
+            echo "<div class='col-md-12 post d-flex flex-wrap justify-content-between'>";
+            echo "<div class='-inline'><a class='text-dark post-title' href='sublueddit.php?sid=$sid'>$title</a> <p class='post-content'>$description</p></div>";
+            echo "<div class='flex-end text-end'><a class='text-dark' href='sublueddit.php?sid=$sid'>View</a></div>";
             echo "</div>";
           }
           ?>
