@@ -9,7 +9,7 @@ $profilePath = $_SESSION['profilePath'];
 <div class="col-md-3 mb-4" id>
     <div class="d-flex flex-column flex-shrink-1">
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none pb-4">
-            <span class="fs-6 fw-bold">Subscriptions&nbsp;&#8594;</span>
+            <span class="fs-6 fw-bold">Subscriptions</span>
         </a>
         <ul class="nav flex-column mb-auto pt-2">
             <?php
@@ -45,7 +45,7 @@ $profilePath = $_SESSION['profilePath'];
                     mysqli_stmt_close($stmt);
 
                     echo '<li class="nav-item">
-                    <a href="sublueddit.php?sid=' . $sid . '" class="nav-link link-dark sidebarItems fs-6" aria-current="page">' . $title . '</a>
+                    <a href="sublueddit.php?sid=' . $sid . '" class="nav-link link-dark sidebarItems fs-6 d-flex-inline" aria-current="page"> <span class="d-inline-block bg-secondary rounded-circle p-1"></span> &nbsp;' . $title . '</a>
                 </li>';
                 }
             } else {
@@ -56,7 +56,8 @@ $profilePath = $_SESSION['profilePath'];
             ?>
 
         </ul>
-        <div class="dropdown align-self-baseline mt-5">
+        <hr class="mt-5 w-75" />
+        <div class="dropdown align-self-baseline ">
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                 id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="<?php echo $profilePath ?>" alt="" width="32" height="32" class="rounded-circle me-2" />
@@ -71,6 +72,26 @@ $profilePath = $_SESSION['profilePath'];
                 </li>
                 <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
             </ul>
+        </div>
+
+        <!-- Make a two column grid for the to link to User Agreement, Privacy Policy, Content Policy, Moderator Code Of Conduct
+        -->
+        <div class="row mt-5 w-75" style="font-size:0.7rem;">
+            <div class="col-md-6">
+                <a href="#" class="text-decoration-none text-muted">User Agreement</a>
+                <br />
+                <a href="#" class="text-decoration-none text-muted">Privacy Policy</a>
+            </div>
+            <div class="col-md-6">
+                <a href="#" class="text-decoration-none text-muted">Content Policy</a>
+                <br />
+                <a href="#" class="text-decoration-none text-muted">Moderator Code of Conducts</a>
+            </div>
+        </div>
+        <div class="row mt-4 w-75" style="font-size:0.7rem;">
+            <div class="col-md-12">
+                <a href="#" class="text-decoration-none text-muted">© 2023 Blueddit, Inc.</a>
+            </div>
         </div>
     </div>
 </div>

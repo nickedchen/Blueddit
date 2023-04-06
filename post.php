@@ -207,17 +207,7 @@
 
         <!-- Panel -->
         <div class="col-md-3">
-          <div class="dropdown">
-            <button class="btn btn-primary border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Top
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">New</a></li>
-              <li><a class="dropdown-item" href="#">Recommended</a></li>
-              <li><a class="dropdown-item" href="#">Hot</a></li>
-            </ul>
-          </div>
+          <?php include 'include/panel.php'; ?>
         </div>
       </div>
     </div>

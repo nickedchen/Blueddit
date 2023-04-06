@@ -173,16 +173,6 @@ button span {
   text-decoration: none;
 }
 
-.dropdown {
-  display: block;
-  text-align: right;
-}
-
-.dropdown .btn {
-  border-radius: 10px;
-  background: grey;
-  padding: 0.5em 1.5em;
-}
 
 #newPost {
   flex-direction: column;
@@ -284,4 +274,8 @@ button span {
 #newPostBtn {
   background-color: #00b5ee;
 }
-
+r
+.bg-body-tertiary {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(248,249,250),var(--bs-bg-opacity))!important;
+}

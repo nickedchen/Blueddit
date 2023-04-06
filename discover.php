@@ -1,7 +1,7 @@
 <!-- Discover -->
 
 <!DOCTYPE html>
-<html lang="en" class="home">
+<html lang="en">
 
 <head>
   <title>Discover - Blueddit</title>
@@ -66,23 +66,7 @@
 
         <!-- Panel -->
         <div class="col-md-3 flex-column">
-          <div class="dropdown">
-            <!-- new post button -->
-            <a href="newPost.php">
-              <button class="btn btn-secondary border-0" id="newPostBtn" type="button">
-                New Post
-              </button>
-            </a>
-            <button class="btn btn-primary border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Sort
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">New</a></li>
-              <li><a class="dropdown-item" href="#">Recommended</a></li>
-              <li><a class="dropdown-item" href="#">Hot</a></li>
-            </ul>
-          </div>
+          <?php include 'include/panel.php'; ?>
         </div>
       </div>
     </div>

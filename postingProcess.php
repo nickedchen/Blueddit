@@ -6,6 +6,7 @@ $title = $_POST['newTitle'];
 $description = $_POST['newDescription'];
 $userid = $_SESSION['userid'];
 $sid = $_POST['sid'];
+$link = $_POST['newLink'];
 
 //to prevent form mysqli injection  
 $title = stripcslashes($title);
@@ -21,7 +22,7 @@ $link = mysqli_real_escape_string($conn, $link);
 //but this should be changed once subblueddits work. 
 
 $sql = "INSERT INTO posts (title, content, userid, sid, link)
-    Values ('$title', '$description', $userid, 1 , '$link')";
+    Values ('$title', '$description', $userid, $sid, '$link')";
 $success = mysqli_query($conn, $sql);
 
 
