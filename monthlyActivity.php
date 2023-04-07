@@ -13,6 +13,12 @@
 <main>
 
   <body>
+    <?php
+      if (!isset($_SESSION['admin']) || $_SESSION['admin'] == false) {
+        header('Location: index.php');
+        die();
+      }
+    ?>
 
     <!-- Navigation bar -->
     <?php include 'include/navBar.php'; ?>

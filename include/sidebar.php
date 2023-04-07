@@ -67,6 +67,17 @@ $profilePath = $_SESSION['profilePath'];
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a class="dropdown-item" href="profile.php">Profile Settings</a></li>
+                <?php
+                    session_start();
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                        ?>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="monthlyActivity.php">Activity Tracking</a></li>
+                        <?php
+                    }
+                ?>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>

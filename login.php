@@ -25,6 +25,10 @@ if ($count == 1) {
     $_SESSION['userid'] = $row['userid'];
     $_SESSION['profilePath'] = $row['profilepath'];
 
+    if ($row['isadmin'] == true){
+        $_SESSION['admin'] = true;
+    }
+
     //Track Usage
     $sql = "INSERT INTO usageTracking (type, entryDate)
     Values ('LOGIN', CURDATE())";
