@@ -77,10 +77,10 @@ CREATE TABLE usageTracking (
 
 INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isAdmin, isBanned)
 VALUES
-    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0),
-    ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0),
-    ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0),
-    ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1);
+    ('Teddy2014', '827ccb0eea8a706c4c34a16891f84e7b', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0),
+    ('Meerkat', '827ccb0eea8a706c4c34a16891f84e7b', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0),
+    ('RedPanda', '21232f297a57a5a743894a0e4a801fc3', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0),
+    ('SeaOtter', '827ccb0eea8a706c4c34a16891f84e7b', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1);
 
 
 INSERT INTO sublueddits (sid, title, description)
