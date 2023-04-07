@@ -32,6 +32,7 @@
         <!-- Charts -->
         <div class="col-md-6 overflow-auto">
           <h2 class="text-dark" >Overall User Activity</h2>
+          <p class="text-dark" >Monthly activity.</p>
           <p style="align:center;" class = "text-dark"><canvas  id="chartjs_bar"></canvas></p>
           <?php
             if ($error != null) {
