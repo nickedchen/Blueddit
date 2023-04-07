@@ -77,33 +77,22 @@
                   <?php } else if ($post['link'] != null) { ?>
                       <span class="post-link">
                         <a href="<?= $post['link'] ?>" class="text-muted">
-                          ⎋ External Link
+                        ⎋ External Link
                         </a>
                       </span>
                   <?php } ?>
 
 
-                  <div id="<?= $post['pid'] ?>" class="upvotes">
-                    <form method="post" action="upvotes.php">
-                      <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
-                      <input type="hidden" name="upvoted" value="1">
-                      <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote" value="&uparrow;" onclick="markArrowClickedUp(this)" />
-                    </form>
+                  <div id="<?= $post['pif'] ?>" class="upvotes">
+                    <a id="up" onclick="vote('up', <?= $post['pid'] ?>)">&uarr;</a>
                     <p>
                       <?= $post['upvotes'] ?>
                     </p>
-                    <form method="post" action="upvotes.php">
-                      <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
-                      <input type="hidden" name="downvoted" value="1">
-                      <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
-                    </form>
+                    <a id="down" onclick="vote('down', <?= $post['pid'] ?>)">&darr;</a>
                   </div>
 
                   <p>Posted by
                     <?= $post['username'] ?>
-                    in
-                    <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">
-                      b/<?= $post['stitle'] ?>
                   </p>
 
                   <?php if ($_SESSION['isAdmin'] == 1) { ?>
@@ -111,7 +100,7 @@
                   <?php } ?>
 
                 </div>
-                <div class="icon"><a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>">→</a></div>
+                <div class="icon"><a href="post.php?pid=<?= $post['pid'] ?>">→</a></div>
               </div>
             <?php }
           }

@@ -4,6 +4,11 @@ include 'include/connection.php';
 $userid = $_SESSION['userid'];
 $sid = $_GET['sid'];
 
+// if guest, guest error
+if ($_SESSION['isguest'] == true) {
+    $_SESSION['guestError'] = true;
+    exit(header('Location: sublueddit.php?sid=' . $sid));
+}
 
 $sql = "SELECT subscribedSublueddits FROM users WHERE userid = ?;";
 $result = mysqli_prepare($conn, $sql);

@@ -19,6 +19,7 @@ CREATE TABLE users (
     profilepath VARCHAR(100) DEFAULT 'res/img/person-circle.svg',
     isadmin BOOLEAN DEFAULT 0,
     isbanned BOOLEAN DEFAULT 0,
+    isguest BOOLEAN DEFAULT 0,
     PRIMARY KEY(userid)
 );
 
@@ -66,12 +67,13 @@ CREATE TABLE profilepics (
 
 -- sample data to insert:
 
-INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isAdmin, isBanned)
+INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isadmin, isbanned, isguest)
 VALUES
-    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0),
-    ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0),
-    ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0),
-    ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1);
+    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0, 0),
+    ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0, 0),
+    ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0, 0),
+    ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1, 0),
+    ('Guest', 'guest', 'guest@example.com', '', " ", 0, 'res/img/Guest.svg', 0, 0, 1);
 
 
 INSERT INTO sublueddits (sid, title, description)

@@ -15,6 +15,12 @@ if (mysqli_connect_errno()) {
     exit($output);
 }
 
+//if guest, guest error
+if ($_SESSION['isguest'] == true) {
+    $_SESSION['guestError'] = true;
+    exit(header('Location: post.php?pid=' . $pid));
+}
+
 // Prepare and execute the SQL statement to insert the comment
 $sql = "INSERT INTO comments (content, pid, userid) VALUES (?, ?, ?)";
 $stmt = mysqli_prepare($conn, $sql);

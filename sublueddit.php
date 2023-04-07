@@ -40,6 +40,7 @@
 </head>
 
 <main>
+
     <body>
         <!-- Navigation bar -->
         <?php include 'include/navBar.php'; ?>
@@ -74,8 +75,8 @@
                         <div class="col-md-2 align-self-end">
                             <!-- Check if user is subscribed to sublueddit -->
                             <?php if ($subscribed): ?>
-                                <button class="btn btn-outline-secondary rounded-pill w-auto text-light" type="button" id="subscribeBtn"
-                                    onclick="window.location.href='subscribe.php?sid=<?= $sid ?>'">
+                                <button class="btn btn-outline-secondary rounded-pill w-auto text-light" type="button"
+                                    id="subscribeBtn" onclick="window.location.href='subscribe.php?sid=<?= $sid ?>'">
                                     Unsubscribe
                                 </button>
                             <?php else: ?>
@@ -116,73 +117,9 @@
                     }
 
                     //display all posts
-                    foreach ($posts as $post) { ?>
-                        <div class="post">
-
-                            <img src="<?= $post['profilepath'] ?>" alt="ppl" width="40" height="40"
-                                class="rounded-circle me-2" />
-                            <div class="content">
-
-                                <span class="post-title">
-                                    <?= $post['title'] ?>
-                                </span>
-
-                                <span class="post-text">
-                                    <?= $post['content'] ?>
-                                </span>
-
-                                <?php
-
-                                //if link is empty
-                                if ($post['link'] == null) {
-                                    ?>
-                                <?php }
-                                // if link is a picture
-                                else if ($post['link'] != null && (strpos($post['link'], '.jpg') !== false || strpos($post['link'], '.png') !== false)) {
-                                    ?>
-                                        <span class="post-link">
-                                            <img src="<?= $post['link'] ?>" alt="post image" width="100%" height="auto" />
-                                        </span>
-                                <?php } else if ($post['link'] != null) { ?>
-                                            <span class="post-link">
-                                                <a href="<?= $post['link'] ?>" class="text-muted">
-                                                    ⎋ External Link
-                                                </a>
-                                            </span>
-                                <?php } ?>
-
-                                <div id="<?= $post['pid'] ?>" class="upvotes">
-                                    <form method="post" action="upvotes.php">
-                                        <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
-                                        <input type="hidden" name="upvoted" value="1">
-                                        <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder"
-                                            type="submit" name="vote" value="&uparrow;"
-                                            onclick="markArrowClickedUp(this)" />
-                                    </form>
-                                    <p>
-                                        <?= $post['upvotes'] ?>
-                                    </p>
-                                    <form method="post" action="upvotes.php">
-                                        <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
-                                        <input type="hidden" name="downvoted" value="1">
-                                        <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder"
-                                            type="submit" name="vote" value="&downarrow;"
-                                            onclick="markArrowClickedDown(this)" />
-                                    </form>
-                                </div>
-
-                                <p>Posted by
-                                    <?= $post['username'] ?>
-                                </p>
-
-                                <?php if ($_SESSION['isAdmin'] == 1) { ?>
-                                    <a style="float:right;" href="deletePost.php?pid=<?= $post['pid'] ?>">Delete Post</a>
-                                <?php } ?>
-
-                            </div>
-                            <div class="icon"><a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>">→</a></div>
-                        </div>
-                    <?php }
+                    foreach ($posts as $post) {
+                        include 'postRow.php';
+                    }
                     ?>
                 </div>
 
