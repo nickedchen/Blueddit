@@ -1,14 +1,17 @@
 <?php
 
 // Database connection
-session_start();
+if( empty(session_id()) && !headers_sent()){
+    session_start();
+}
 
-// try {
+// Mack's database
 // $servername = "localhost";
 // $username = "51832087";
 // $password = "51832087";
 // $dbname = "db_51832087";
 
+//Nick's database
 $servername = "localhost";
 $username = "80611197";
 $password = "80611197";
