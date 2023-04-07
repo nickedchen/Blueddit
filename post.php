@@ -38,8 +38,8 @@
     );
   }
 
-  $sql = "INSERT INTO usageTracking (type, sid)
-  Values ('VIEWPOST', ".$post['sid'].")";
+  $sql = "INSERT INTO usageTracking (type, sid, entryDate)
+  Values ('VIEWPOST', ".$post['sid'].", CURDATE())";
   mysqli_query($conn, $sql);
 
   // get comments

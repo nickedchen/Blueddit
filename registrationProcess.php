@@ -51,8 +51,8 @@
 	    die();
     }else{
         //Track usage
-        $sql = "INSERT INTO usageTracking (type)
-        Values ('REGISTRATION')";
+        $sql = "INSERT INTO usageTracking (type, entryDate)
+        Values ('REGISTRATION', CURDATE())";
         mysqli_query($conn, $sql);
 
         $_SESSION['registered'] = true;

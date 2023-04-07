@@ -36,8 +36,8 @@ if ($upvoted) {
     $conn->query("UPDATE users SET totalUpvotes = GREATEST(totalUpvotes - 1, 0) WHERE userid = (SELECT userid FROM posts WHERE pid = $pid)");
 }
 //Track usage
-$sql = "INSERT INTO usageTracking (type, sid)
-Values ('VOTES', $sid)";
+$sql = "INSERT INTO usageTracking (type, sid, entryDate)
+Values ('VOTES', $sid, CURDATE())";
 mysqli_query($conn, $sql);
 
 // Add user to upvoted_users list

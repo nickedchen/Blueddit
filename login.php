@@ -24,8 +24,8 @@ if ($count == 1) {
     $_SESSION['profilePath'] = $row['profilepath'];
 
     //Track Usage
-    $sql = "INSERT INTO usageTracking (type)
-    Values ('LOGIN')";
+    $sql = "INSERT INTO usageTracking (type, entryDate)
+    Values ('LOGIN', CURDATE())";
     mysqli_query($conn, $sql);
 
     header('Location: index.php');
