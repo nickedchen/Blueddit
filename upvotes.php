@@ -10,6 +10,12 @@ if ($error != null) {
 $pid = $_POST['pid'];
 $userid = $_SESSION['userid'];
 
+//if guest, guest error
+if ($_SESSION['isguest'] == true) {
+    $_SESSION['guestError'] = true;
+    exit(header("Location: " . $_SERVER['HTTP_REFERER']));
+}
+
 // Check if user has already upvoted the post
 $stmt = $conn->prepare("SELECT upvoted_users, sid FROM posts WHERE pid = ?");
 $stmt->bind_param("i", $pid);

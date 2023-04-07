@@ -1,8 +1,20 @@
 <?php
 
+include "connection.php";
+
+//Check for guest
+if (isset($_SESSION['guestError']) && $_SESSION['guestError'] == true) {
+    ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>You are currently logged in as a guest.</strong> Please log in or sign up to access all features.
+        <a href="auth.php" class="alert-link">Log in/sign up here</a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    $_SESSION['guestError'] = false;
+}
 
 //Check for login success
-include "connection.php";
 if ($_SESSION['signupFailed'] == 'true') {
     ?>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">

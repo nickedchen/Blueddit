@@ -1,9 +1,6 @@
 <?php
-
-
 $username = $_SESSION['username'];
 $profilePath = $_SESSION['profilePath'];
-
 ?>
 
 <div class="col-md-3 mb-4" id>
@@ -56,38 +53,53 @@ $profilePath = $_SESSION['profilePath'];
             ?>
 
         </ul>
-        <hr class="mt-5 w-75" />
-        <div class="dropdown align-self-baseline ">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <hr class="mt-5 w-75 text-dark" />
+        <div class="align-self-baseline my-2">
+            <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="<?php echo $profilePath ?>" alt="" width="32" height="32" class="rounded-circle me-2" />
                 <strong>
                     <?= $username ?>
                 </strong>
             </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="profile.php">Profile Settings</a></li>
+        </div>
+
+        <ul class="list-unstyled bg-transparent border-0 w-75 my-2">
+            <?php
+            // if guest
+            if ($_SESSION['isguest'] == true) {
+                ?>
+                <li class="list-unstyled bg-transparent border-0 pb-2" style="onhover: #ff4500;">
+                    <a class="text-dark" href="auth.php">Sign in to Blueddit</a>
+                </li>
+                <?php
+            } else {
+                ?>
+                <li class="list-unstyled bg-transparent border-0 pb-2" style="onhover: #ff4500;">
+                    <a class="text-dark" href="profile.php">Profile Settings</a>
+                </li>
                 <?php
                     session_start();
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                    if (isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == true) {
                         ?>
-                        <li>
-                            <hr class="dropdown-divider" />
+                        <li class="list-unstyled dropdown-item-danger border-0 text-dark bg-transparent" style="onhover: #ff4500;">
+                          <a class="text-dark" href="monthlyActivity.php">Activity Tracking</a>
                         </li>
-                        <li><a class="dropdown-item" href="monthlyActivity.php">Activity Tracking</a></li>
                         <?php
                     }
                 ?>
-                <li>
-                    <hr class="dropdown-divider" />
+                <li class="list-unstyled dropdown-item-danger border-0 text-dark bg-transparent" style="onhover: #ff4500;">
+                    <a class="text-dark" href="logout.php">Sign Out</a>
                 </li>
-                <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
-            </ul>
-        </div>
+                <?php
+            }
+            ?>
+        </ul>
+        <hr class=" w-75 text-dark" />
 
         <!-- Make a two column grid for the to link to User Agreement, Privacy Policy, Content Policy, Moderator Code Of Conduct
         -->
-        <div class="row mt-5 w-75" style="font-size:0.7rem;">
+        <div class="row mt-1 w-75" style="font-size:0.7rem;">
             <div class="col-md-6">
                 <a href="#" class="text-decoration-none text-muted">User Agreement</a>
                 <br />

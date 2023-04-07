@@ -4,9 +4,9 @@ include "include/connection.php";
 
 $title = $_POST['newTitle'];
 $description = $_POST['newDescription'];
-$userid = $_SESSION['userid'];
 $sid = $_POST['sublueddit'];
-$link = $_POST['newLink'];
+$link = $_POST['link'];
+$userid = $_SESSION['userid'];
 
 //to prevent form mysqli injection  
 $title = stripcslashes($title);
@@ -17,22 +17,13 @@ $description = mysqli_real_escape_string($conn, $description);
 $link = stripcslashes($link);
 $link = mysqli_real_escape_string($conn, $link);
 
-//Insert into database and determine if successful
-//For now all posts go into the subblueddit with ID 1,
-//but this should be changed once subblueddits work. 
-if (!empty($link)){
-    $sql = "INSERT INTO posts (title, content, userid, sid, link)
-    Values ('$title', '$description', $userid, $sid, '$link')";
-}
-else {
-    $sql = "INSERT INTO posts (title, content, userid, sid)
-    VALUES ('$title','$description', $userid, $sid);";
-    echo $sql;
-}
-$success = mysqli_query($conn, $sql);
+$sql = "INSERT INTO posts (title, content, userid, sid, link)
+    Values (?, ?, ?, ?, ?)";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "ssiss", $title, $description, $userid, $sid, $link);
+$success = mysqli_stmt_execute($stmt);
 
-
-//If successful
+//If not successful
 if (!$success) {
     $_SESSION['posted'] = false;
     header('Location: newPost.php');
@@ -49,5 +40,4 @@ if (!$success) {
     mysqli_close($conn);
     die();
 }
-
 ?>

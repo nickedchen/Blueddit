@@ -20,6 +20,7 @@ CREATE TABLE users (
     profilepath VARCHAR(100) DEFAULT 'res/img/person-circle.svg',
     isadmin BOOLEAN DEFAULT 0,
     isbanned BOOLEAN DEFAULT 0,
+    isguest BOOLEAN DEFAULT 0,
     PRIMARY KEY(userid)
 );
 
@@ -75,7 +76,7 @@ CREATE TABLE usageTracking (
 
 -- sample data to insert:
 
-INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isAdmin, isBanned)
+INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isadmin, isbanned, isguest)
 VALUES
     ('Teddy2014', '827ccb0eea8a706c4c34a16891f84e7b', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0),
     ('Meerkat', '827ccb0eea8a706c4c34a16891f84e7b', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0),

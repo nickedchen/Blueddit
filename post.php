@@ -4,7 +4,6 @@
 <html lang="en" class="home">
 
 <head>
-  <title>Post detail</title>
   <?php include 'include/head.php';
   $pid = $_GET['pid'];
   $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -64,6 +63,8 @@
   }
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
+
+  echo "<title>$title - Blueddit</title>";
   ?>
 
 </head>
@@ -127,7 +128,7 @@
                   <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
                     value="&uparrow;" onclick="markArrowClickedUp(this)" />
                 </form>
-                <p>
+                <p class="px-2">
                   <?= $post['upvotes'] ?>
                 </p>
                 <form method="post" action="upvotes.php">
@@ -145,7 +146,6 @@
                   b/<?= $post['stitle'] ?>
                 </a>
               </p>
-
 
               <?php if ($_SESSION['isAdmin'] == 1) { ?>
                 <a style="float:right;" href="deletePost.php?pid=<?= $post['pid'] ?>">Delete Post</a>
