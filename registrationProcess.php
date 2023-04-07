@@ -50,6 +50,11 @@
         mysqli_close($conn); 
 	    die();
     }else{
+        //Track usage
+        $sql = "INSERT INTO usageTracking (type)
+        Values ('USER')";
+        mysqli_query($conn, $sql);
+
         $_SESSION['registered'] = true;
 	    header('Location: auth.php');
         mysqli_close($conn); 

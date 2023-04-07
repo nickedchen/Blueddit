@@ -22,6 +22,12 @@ if ($count == 1) {
     $_SESSION['username'] = $row['username'];
     $_SESSION['userid'] = $row['userid'];
     $_SESSION['profilePath'] = $row['profilepath'];
+
+    //Track Usage
+    $sql = "INSERT INTO usageTracking (type)
+    Values ('LOGIN')";
+    mysqli_query($conn, $sql);
+
     header('Location: index.php');
     die();
 } else {

@@ -63,6 +63,14 @@ CREATE TABLE profilepics (
     FOREIGN KEY(userid) REFERENCES users(userid) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE usageTracking (
+    entryID INT UNIQUE NOT NULL AUTO_INCREMENT,
+    sid INT,
+    type VARCHAR(50) NOT NULL,
+    entryDate date DEFAULT GETDATE(),
+    PRIMARY KEY(entryID),
+    FOREIGN KEY(sid) REFERENCES sublueddits(sid) ON UPDATE CASCADE ON DELETE CASCADE
+);
 
 -- sample data to insert:
 

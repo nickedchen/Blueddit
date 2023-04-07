@@ -33,6 +33,11 @@ if (!$success) {
     mysqli_close($conn);
     die();
 } else {
+    //Track usage
+    $sql = "INSERT INTO usageTracking (type, sid)
+    Values ('POST', $sid)";
+    mysqli_query($conn, $sql);
+
     $_SESSION['posted'] = true;
     header('Location: index.php');
     mysqli_close($conn);

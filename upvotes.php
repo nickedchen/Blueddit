@@ -11,10 +11,11 @@ $pid = $_POST['pid'];
 $userid = $_SESSION['userid'];
 
 // Check if user has already upvoted the post
-$stmt = $conn->prepare("SELECT upvoted_users FROM posts WHERE pid = ?");
+$stmt = $conn->prepare("SELECT upvoted_users, sid FROM posts WHERE pid = ?");
 $stmt->bind_param("i", $pid);
 $stmt->execute();
 $upvoted_users = $stmt->get_result()->fetch_assoc()['upvoted_users'];
+$sid = $stmt->get_result()->fetch_assoc()['sid'];
 if (strpos($upvoted_users, $userid) !== false) {
     $_SESSION['duplicatedUpvote'] = True;
     exit(header("Location: " . $_SERVER['HTTP_REFERER']));
@@ -34,6 +35,10 @@ if ($upvoted) {
     $conn->query("UPDATE posts SET upvotes = GREATEST(upvotes - 1, 0) WHERE pid = $pid");
     $conn->query("UPDATE users SET totalUpvotes = GREATEST(totalUpvotes - 1, 0) WHERE userid = (SELECT userid FROM posts WHERE pid = $pid)");
 }
+//Track usage
+$sql = "INSERT INTO usageTracking (type, sid)
+Values ('VOTES', $sid)";
+mysqli_query($conn, $sql);
 
 // Add user to upvoted_users list
 $conn->query("UPDATE posts SET upvoted_users = CONCAT(upvoted_users, '$userid,') WHERE pid = $pid");
