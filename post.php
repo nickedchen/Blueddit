@@ -38,6 +38,10 @@
     );
   }
 
+  $sql = "INSERT INTO usageTracking (type, sid)
+  Values ('VIEWPOST', ".$post['sid'].")";
+  mysqli_query($conn, $sql);
+
   // get comments
   $sql2 = "SELECT c.cid, c.content, c.upvotes, u.username, u.profilepath
   FROM comments c

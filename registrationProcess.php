@@ -52,7 +52,7 @@
     }else{
         //Track usage
         $sql = "INSERT INTO usageTracking (type)
-        Values ('USER')";
+        Values ('REGISTRATION')";
         mysqli_query($conn, $sql);
 
         $_SESSION['registered'] = true;
