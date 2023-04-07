@@ -32,7 +32,7 @@
             exit($output);
           } else {
             //display posts and which sublueddit they belong to
-            $stmt = $conn->prepare("SELECT p.pid, p.title, p.link, p.upvotes, p.content, p.sid, s.title AS stitle, u.username, u.profilepath
+            $stmt = $conn->prepare("SELECT p.pid, p.title, p.link, p.upvotes, p.content, p.sid, s.title AS stitle, u.username, u.profilepath, u.userid
             FROM posts p
             INNER JOIN sublueddits s ON p.sid = s.sid
             INNER JOIN users u ON p.userid = u.userid
@@ -50,7 +50,8 @@
                 'sid' => $row['sid'],
                 'stitle' => $row['stitle'],
                 'username' => $row['username'],
-                'profilepath' => $row['profilepath']
+                'profilepath' => $row['profilepath'],
+                'userid' => $row['userid']
               ]);
             }
             foreach ($posts as $post) {

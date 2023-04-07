@@ -23,11 +23,11 @@
             <?php
         }
         ?>
-        <div id="<?= $post['pid'] ?>" class="upvotes">
+        <div id="<?= $post['pid'] ?>" class="upvotes fs-6">
             <form method="post" action="upvotes.php">
                 <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                 <input type="hidden" name="upvoted" value="1">
-                <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
+                <input class="border-0 bg-info px-2 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
                     value="&uparrow;" onclick="markArrowClickedUp(this)" />
             </form>
             <p>
@@ -36,12 +36,12 @@
             <form method="post" action="upvotes.php">
                 <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                 <input type="hidden" name="downvoted" value="1">
-                <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder" type="submit"
+                <input class="border-0 bg-warning px-2 arrow text-light rounded-pill fw-bolder" type="submit"
                     name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
             </form>
         </div>
         <p>Posted by
-            <a class="text-info" href="publicProfile.php?userid=<?= $post['puserid'] ?>"><?= $post['username'] ?></a>
+            <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
             <?php
             // if sid and stitle are not set, then do not display the sublueddit
             if (isset($post['sid']) && isset($post['stitle'])) {
@@ -51,8 +51,10 @@
             }
             ?>
         </p>
-        <?php if ($_SESSION['isAdmin'] == 1) { ?>
-            <a style="float:right;" href="deletePost.php?pid=<?= $post['pid'] ?>">Delete Post</a>
+        <?php if ($_SESSION['isadmin'] == true) { ?>
+            <form method="post" action="deletePost.php">
+                <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
+                <span class="badge rounded-pill bg-danger px-3 py-2" type="submit" name="delete">Remove</span>
         <?php } ?>
     </div>
     <div class="icon"><a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>">→</a></div>

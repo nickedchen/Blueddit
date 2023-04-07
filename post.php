@@ -15,14 +15,14 @@
   $pid = mysqli_real_escape_string($conn, $pid);
 
   //get post details
-  $sql = "SELECT p.pid, p.title, p.content, p.upvotes, p.link, u.username, u.profilepath, p.sid, s.title
+  $sql = "SELECT p.pid, p.title, p.content, p.upvotes, p.link, u.username, u.profilepath, p.sid, s.title, p.userid
   FROM posts p
   INNER JOIN users u ON p.userid = u.userid
   INNER JOIN sublueddits s ON p.sid = s.sid
   WHERE p.pid = $pid;";
   $result = mysqli_prepare($conn, $sql);
   mysqli_stmt_execute($result);
-  mysqli_stmt_bind_result($result, $pid, $title, $content, $upvotes, $link, $username, $profilepath, $sid, $stitle);
+  mysqli_stmt_bind_result($result, $pid, $title, $content, $upvotes, $link, $username, $profilepath, $sid, $stitle, $userid);
   while (mysqli_stmt_fetch($result)) {
     $post = array(
       'pid' => $pid,
@@ -34,22 +34,23 @@
       'profilepath' => $profilepath,
       'sid' => $sid,
       'stitle' => $stitle,
+      'userid' => $userid,
     );
   }
 
   $sql = "INSERT INTO usageTracking (type, sid, entryDate)
-  Values ('VIEWPOST', ".$post['sid'].", CURDATE())";
+  Values ('VIEWPOST', " . $post['sid'] . ", CURDATE())";
   mysqli_query($conn, $sql);
 
   // get comments
-  $sql2 = "SELECT c.cid, c.content, c.upvotes, u.username, u.profilepath
+  $sql2 = "SELECT c.cid, c.content, c.upvotes, u.username, u.profilepath, u.userid
   FROM comments c
   INNER JOIN users u ON c.userid = u.userid
   WHERE c.pid = $pid;";
 
   $result = mysqli_prepare($conn, $sql2);
   mysqli_stmt_execute($result);
-  mysqli_stmt_bind_result($result, $cid, $comment_content, $comment_upvotes, $comment_username, $comment_profilepath);
+  mysqli_stmt_bind_result($result, $cid, $comment_content, $comment_upvotes, $comment_username, $comment_profilepath, $comment_userid);
 
   $comments = array();
   while (mysqli_stmt_fetch($result)) {
@@ -59,6 +60,7 @@
       'comment_upvotes' => $comment_upvotes,
       'comment_username' => $comment_username,
       'comment_profilepath' => $comment_profilepath,
+      'comment_userid' => $comment_userid,
     );
   }
   mysqli_stmt_close($stmt);
@@ -128,7 +130,7 @@
                   <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
                     value="&uparrow;" onclick="markArrowClickedUp(this)" />
                 </form>
-                <p class="px-2">
+                <p>
                   <?= $post['upvotes'] ?>
                 </p>
                 <form method="post" action="upvotes.php">
@@ -140,19 +142,34 @@
               </div>
 
               <p>Posted by
-                <?= $post['username'] ?>
-                in
-                <a href="sublueddit.php?sid=<?= $post['sid'] ?>" class="text-muted">
-                  b/<?= $post['stitle'] ?>
-                </a>
+                <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
+                <?php
+                // if sid and stitle are not set, then do not display the sublueddit
+                if (isset($post['sid']) && isset($post['stitle'])) {
+                  ?>
+                  in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
+                  <?php
+                }
+                ?>
               </p>
 
-              <?php if ($_SESSION['isAdmin'] == 1) { ?>
-                <a style="float:right;" href="deletePost.php?pid=<?= $post['pid'] ?>">Delete Post</a>
-              <?php } ?>
+              <div class="d-flex flex-row">
 
+                <!-- if the post user is the current user, then display edit and delete buttons -->
+                <?php if ($_SESSION['userid'] == $post['userid']) { ?>
+                  <span class="badge rounded-pill bg-secondary px-3 py-2 me-2"><a class="text-light text-decoration-none"
+                      href="editPost.php?pid=<?= $post['pid'] ?>">Edit</a></span>
+                  <span class="badge rounded-pill bg-danger px-3 py-2"><a class="text-light text-decoration-none"
+                      href="deletePost.php?pid=<?= $post['pid'] ?>">Delete</a></span>
+
+                <?php } else if ($_SESSION['isadmin'] == true) { ?>
+                    <span class="badge rounded-pill bg-danger px-3 py-2"><a class="text-light text-decoration-none"
+                        href="deletePost.php?pid=<?= $post['pid'] ?>">Delete</a></span>
+                <?php } ?>
+              </div>
             </div>
           </div>
+
 
           <h5 class="text-dark">Comments</h5>
           <?php
@@ -167,11 +184,11 @@
                   <?= $comment['comment_content'] ?>
                 </span>
 
-                <div id="<?= $comment['cid'] ?>" class="upvotes">
+                <div id="<?= $comment['cid'] ?>" class="upvotes fs-6">
                   <form method="post" action="upvotes_comments.php">
                     <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
                     <input type="hidden" name="upvoted" value="1">
-                    <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
+                    <input class="border-0 bg-info px-2 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
                       value="&uparrow;" onclick="markArrowClickedUp(this)" />
                   </form>
                   <p>
@@ -180,18 +197,27 @@
                   <form method="post" action="upvotes_comments.php">
                     <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
                     <input type="hidden" name="downvoted" value="1">
-                    <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder" type="submit"
+                    <input class="border-0 bg-warning px-2 arrow text-light rounded-pill fw-bolder" type="submit"
                       name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
                   </form>
                 </div>
 
                 <p>Posted by
-                  <?= $comment['comment_username'] ?>
+                  <a class="text-info" href="publicProfile.php?userid=<?= $comment['comment_userid'] ?>"><?= $comment['comment_username'] ?></a>
                 </p>
 
-                <?php if ($_SESSION['isAdmin'] == 1) { ?>
-                  <a style="float:right;" href="deleteComment.php?cid=<?= $comment['cid'] ?>">Delete Comment</a>
-                <?php } ?>
+                <!-- if the comment user is the current user, then display edit and delete buttons -->
+                <div class="d-flex flex-row">
+                  <?php if ($_SESSION['userid'] == $comment['comment_userid']) { ?>
+                    <span class="badge rounded-pill bg-secondary px-3 py-2 me-2"><a class="text-light text-decoration-none"
+                      href="editPost.php?pid=<?= $post['pid'] ?>&cid=<?= $comment['cid'] ?>">Edit</a></span>
+                  <?php } 
+                  if ($_SESSION['isadmin'] == true) { ?>
+                    <span class="badge rounded-pill bg-danger px-3 py-2"><a class="text-light text-decoration-none"
+                      href="deletePost.php?pid=<?= $post['pid'] ?>&cid=<?= $comment['cid'] ?>">Delete</a></span>
+                  <?php }
+                  ?>
+                </div>
 
               </div>
             </div>
