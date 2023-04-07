@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS posts CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS sublueddits CASCADE;
 DROP TABLE IF EXISTS profilepics CASCADE;
+DROP TABLE IF EXISTS usageTracking CASCADE;
 
 CREATE TABLE users (
     userid INT UNIQUE NOT NULL AUTO_INCREMENT,
@@ -64,16 +65,23 @@ CREATE TABLE profilepics (
     FOREIGN KEY(userid) REFERENCES users(userid) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE usageTracking (
+    entryID INT UNIQUE NOT NULL AUTO_INCREMENT,
+    sid INT,
+    type VARCHAR(16) NOT NULL,
+    entryDate date NOT NULL,
+    PRIMARY KEY(entryID),
+    FOREIGN KEY(sid) REFERENCES sublueddits(sid) ON UPDATE CASCADE ON DELETE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- sample data to insert:
 
 INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isadmin, isbanned, isguest)
 VALUES
-    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0, 0),
-    ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0, 0),
-    ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0, 0),
-    ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1, 0),
-    ('Guest', 'guest', 'guest@example.com', '', " ", 0, 'res/img/Guest.svg', 0, 0, 1);
+    ('Teddy2014', '827ccb0eea8a706c4c34a16891f84e7b', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0),
+    ('Meerkat', '827ccb0eea8a706c4c34a16891f84e7b', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0),
+    ('RedPanda', '21232f297a57a5a743894a0e4a801fc3', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0),
+    ('SeaOtter', '827ccb0eea8a706c4c34a16891f84e7b', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1);
 
 
 INSERT INTO sublueddits (sid, title, description)
@@ -97,3 +105,10 @@ VALUES
     ('I love Bananas too', 5, 2, 2),
     ('I love Apples too', 2, 3, 3),
     ('I love COSC 360 too!!!', 0, 4, 4);
+
+INSERT INTO `usageTracking` (`sid`, `type`, `entryDate`) VALUES
+(NULL, 'LOGIN', '2023-02-06'),
+(4, 'VIEWPOST', '2023-03-06'),
+(1, 'POST', '2023-03-06'),
+(1, 'VIEWPOST', '2023-03-07'),
+(4, 'VIEWPOST', '2023-03-06');

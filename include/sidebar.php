@@ -78,8 +78,18 @@ $profilePath = $_SESSION['profilePath'];
                 <li class="list-unstyled bg-transparent border-0 pb-2" style="onhover: #ff4500;">
                     <a class="text-dark" href="profile.php">Profile Settings</a>
                 </li>
+                <?php
+                    session_start();
+                    if (isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == true) {
+                        ?>
+                        <li class="list-unstyled dropdown-item-danger border-0 text-dark bg-transparent" style="onhover: #ff4500;">
+                          <a class="text-dark" href="monthlyActivity.php">Activity Tracking</a>
+                        </li>
+                        <?php
+                    }
+                ?>
                 <li class="list-unstyled dropdown-item-danger border-0 text-dark bg-transparent" style="onhover: #ff4500;">
-                    <a class="text-dark" href="logout.php">Sign out</a>
+                    <a class="text-dark" href="logout.php">Sign Out</a>
                 </li>
                 <?php
             }
