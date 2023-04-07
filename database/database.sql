@@ -104,3 +104,10 @@ VALUES
     ('I love Bananas too', 5, 2, 2),
     ('I love Apples too', 2, 3, 3),
     ('I love COSC 360 too!!!', 0, 4, 4);
+
+INSERT INTO `usageTracking` (`sid`, `type`, `entryDate`) VALUES
+(NULL, 'LOGIN', '2023-02-06'),
+(4, 'VIEWPOST', '2023-03-06'),
+(1, 'POST', '2023-03-06'),
+(1, 'VIEWPOST', '2023-03-07'),
+(4, 'VIEWPOST', '2023-03-06');
