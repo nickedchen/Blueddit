@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS posts CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS sublueddits CASCADE;
 DROP TABLE IF EXISTS profilepics CASCADE;
+DROP TABLE IF EXISTS usageTracking CASCADE;
 
 CREATE TABLE users (
     userid INT UNIQUE NOT NULL AUTO_INCREMENT,
@@ -66,11 +67,11 @@ CREATE TABLE profilepics (
 CREATE TABLE usageTracking (
     entryID INT UNIQUE NOT NULL AUTO_INCREMENT,
     sid INT,
-    type VARCHAR(50) NOT NULL,
-    entryDate date DEFAULT GETDATE(),
+    type VARCHAR(16) NOT NULL,
+    entryDate date NOT NULL,
     PRIMARY KEY(entryID),
-    FOREIGN KEY(sid) REFERENCES sublueddits(sid) ON UPDATE CASCADE ON DELETE CASCADE
-);
+    FOREIGN KEY(sid) REFERENCES sublueddits(sid) ON UPDATE CASCADE ON DELETE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- sample data to insert:
 
