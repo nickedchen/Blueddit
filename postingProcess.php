@@ -23,13 +23,18 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "ssiss", $title, $description, $userid, $sid, $link);
 $success = mysqli_stmt_execute($stmt);
 
-//If successful
+//If not successful
 if (!$success) {
     $_SESSION['posted'] = false;
     header('Location: newPost.php');
     mysqli_close($conn);
     die();
 } else {
+    //Track usage
+    $sql = "INSERT INTO usageTracking (type, sid, entryDate)
+    Values ('POST', $sid, CURDATE())";
+    mysqli_query($conn, $sql);
+
     $_SESSION['posted'] = true;
     header('Location: index.php');
     mysqli_close($conn);

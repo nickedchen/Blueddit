@@ -13,6 +13,7 @@
     $username = mysqli_real_escape_string($conn, $username); 
     $password = stripcslashes($password);
     $password = mysqli_real_escape_string($conn, $password);
+    $hash = md5($password);
 
     //Check if user already exists
     $sql = "select * from users where email = '$email'";  
@@ -39,7 +40,7 @@
     
     //Insert into database and determine if successful
     $sql = "INSERT INTO users (username, email, password)
-    Values ('$username', '$email', '$password')"; 
+    Values ('$username', '$email', '$hash')"; 
     $success = mysqli_query($conn, $sql);
 
 
@@ -50,6 +51,11 @@
         mysqli_close($conn); 
 	    die();
     }else{
+        //Track usage
+        $sql = "INSERT INTO usageTracking (type, entryDate)
+        Values ('REGISTRATION', CURDATE())";
+        mysqli_query($conn, $sql);
+
         $_SESSION['registered'] = true;
 	    header('Location: auth.php');
         mysqli_close($conn); 

@@ -11,7 +11,9 @@ $email = mysqli_real_escape_string($conn, $email);
 $password = stripcslashes($password);
 $password = mysqli_real_escape_string($conn, $password);
 
-$sql = "select * from users where email = '$email' and password = '$password'";
+$hash = md5($password);
+
+$sql = "select * from users where email = '$email' and password = '$hash'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $count = mysqli_num_rows($result);
@@ -24,6 +26,12 @@ if ($count == 1) {
     $_SESSION['profilePath'] = $row['profilepath'];
     $_SESSION['isguest'] = $row['isguest'];
     $_SESSION['isadmin'] = $row['isadmin'];
+    
+    //Track Usage
+    $sql = "INSERT INTO usageTracking (type, entryDate)
+    Values ('LOGIN', CURDATE())";
+    mysqli_query($conn, $sql);
+    
     header('Location: index.php');
     die();
 } else {

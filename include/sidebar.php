@@ -3,7 +3,7 @@ $username = $_SESSION['username'];
 $profilePath = $_SESSION['profilePath'];
 ?>
 
-<div class="col-md-3 mb-4" id>
+<div class="col-md-3 mb-4">
     <div class="d-flex flex-column flex-shrink-1">
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none pb-4">
             <span class="fs-6 fw-bold">Subscriptions</span>
@@ -78,8 +78,18 @@ $profilePath = $_SESSION['profilePath'];
                 <li class="list-unstyled bg-transparent border-0 pb-2" style="onhover: #ff4500;">
                     <a class="text-dark" href="profile.php">Profile Settings</a>
                 </li>
+                <?php
+                    session_start();
+                    if (isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == true) {
+                        ?>
+                        <li class="list-unstyled bg-transparent border-0 pb-2" style="onhover: #ff4500;">
+                          <a class="text-dark" href="monthlyActivity.php">Activity Tracking</a>
+                        </li>
+                        <?php
+                    }
+                ?>
                 <li class="list-unstyled dropdown-item-danger border-0 text-dark bg-transparent" style="onhover: #ff4500;">
-                    <a class="text-dark" href="logout.php">Sign out</a>
+                    <a class="text-dark" href="logout.php">Sign Out</a>
                 </li>
                 <?php
             }
