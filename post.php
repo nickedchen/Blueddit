@@ -4,7 +4,6 @@
 <html lang="en" class="home">
 
 <head>
-  <title>Post detail</title>
   <?php include 'include/head.php';
   $pid = $_GET['pid'];
   $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -16,14 +15,14 @@
   $pid = mysqli_real_escape_string($conn, $pid);
 
   //get post details
-  $sql = "SELECT p.pid, p.title, p.content, p.upvotes, p.link, u.username, u.profilepath
+  $sql = "SELECT p.pid, p.title, p.content, p.upvotes, p.link, u.username, u.profilepath, p.sid, s.title
   FROM posts p
   INNER JOIN users u ON p.userid = u.userid
+  INNER JOIN sublueddits s ON p.sid = s.sid
   WHERE p.pid = $pid;";
   $result = mysqli_prepare($conn, $sql);
   mysqli_stmt_execute($result);
-  mysqli_stmt_bind_result($result, $pid, $title, $content, $upvotes, $link, $username, $profilepath);
-
+  mysqli_stmt_bind_result($result, $pid, $title, $content, $upvotes, $link, $username, $profilepath, $sid, $stitle);
   while (mysqli_stmt_fetch($result)) {
     $post = array(
       'pid' => $pid,
@@ -33,6 +32,8 @@
       'upvotes' => $upvotes,
       'username' => $username,
       'profilepath' => $profilepath,
+      'sid' => $sid,
+      'stitle' => $stitle,
     );
   }
 
@@ -56,11 +57,10 @@
       'comment_profilepath' => $comment_profilepath,
     );
   }
-
-
-
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
+
+  echo "<title>$title - Blueddit</title>";
   ?>
 
 </head>
@@ -117,16 +117,30 @@
                   </span>
               <?php } ?>
 
-              <div id="<?= $post['pif'] ?>" class="upvotes">
-                <a id="up" onclick="vote('up', <?= $post['pid'] ?>)">&uarr;</a>
-                <p>
+              <div id="<?= $post['pid'] ?>" class="upvotes">
+                <form method="post" action="upvotes.php">
+                  <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
+                  <input type="hidden" name="upvoted" value="1">
+                  <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
+                    value="&uparrow;" onclick="markArrowClickedUp(this)" />
+                </form>
+                <p class="px-2">
                   <?= $post['upvotes'] ?>
                 </p>
-                <a id="down" onclick="vote('down', <?= $post['pid'] ?>)">&darr;</a>
+                <form method="post" action="upvotes.php">
+                  <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
+                  <input type="hidden" name="downvoted" value="1">
+                  <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder" type="submit"
+                    name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
+                </form>
               </div>
 
               <p>Posted by
                 <?= $post['username'] ?>
+                in
+                <a href="sublueddit.php?sid=<?= $post['sid'] ?>" class="text-muted">
+                  b/<?= $post['stitle'] ?>
+                </a>
               </p>
 
               <?php if ($_SESSION['isAdmin'] == 1) { ?>
@@ -150,11 +164,21 @@
                 </span>
 
                 <div id="<?= $comment['cid'] ?>" class="upvotes">
-                  <a id="up" onclick="vote('up', <?= $comment['cid'] ?>)">&uarr;</a>
+                  <form method="post" action="upvotes_comments.php">
+                    <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
+                    <input type="hidden" name="upvoted" value="1">
+                    <input class="border-0 bg-info px-3 arrow text-light rounded-pill fw-bolder" type="submit" name="vote"
+                      value="&uparrow;" onclick="markArrowClickedUp(this)" />
+                  </form>
                   <p>
                     <?= $comment['comment_upvotes'] ?>
                   </p>
-                  <a id="down" onclick="vote('down', <?= $comment['cid'] ?>)">&darr;</a>
+                  <form method="post" action="upvotes_comments.php">
+                    <input type="hidden" name="cid" value="<?= $comment['cid'] ?>">
+                    <input type="hidden" name="downvoted" value="1">
+                    <input class="border-0 bg-warning px-3 arrow text-light rounded-pill fw-bolder" type="submit"
+                      name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
+                  </form>
                 </div>
 
                 <p>Posted by
@@ -183,21 +207,21 @@
 
         <!-- Panel -->
         <div class="col-md-3">
-          <div class="dropdown">
-            <button class="btn btn-primary border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Top
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">New</a></li>
-              <li><a class="dropdown-item" href="#">Recommended</a></li>
-              <li><a class="dropdown-item" href="#">Hot</a></li>
-            </ul>
-          </div>
+          <?php include 'include/panel.php'; ?>
         </div>
       </div>
     </div>
   </body>
 </main>
+
+<script>
+  function markArrowClickedUp(arrow) {
+    arrow.classList.toggle('arrow-clicked-up');
+  }
+
+  function markArrowClickedDown(arrow) {
+    arrow.classList.toggle('arrow-clicked-down');
+  }
+</script>
 
 </html>

@@ -19,6 +19,7 @@ CREATE TABLE users (
     profilepath VARCHAR(100) DEFAULT 'res/img/person-circle.svg',
     isadmin BOOLEAN DEFAULT 0,
     isbanned BOOLEAN DEFAULT 0,
+    isguest BOOLEAN DEFAULT 0,
     PRIMARY KEY(userid)
 );
 
@@ -35,6 +36,7 @@ CREATE TABLE posts (
     content TEXT,
     link VARCHAR(500),
     upvotes INT DEFAULT 0,
+    upvoted_users VARCHAR(1000) DEFAULT '',
     userid INT NOT NULL,
     sid INT,
     PRIMARY KEY(pid),
@@ -46,6 +48,7 @@ CREATE TABLE comments (
     cid INT UNIQUE NOT NULL AUTO_INCREMENT,
     content TEXT,
     upvotes INT DEFAULT 0,
+    upvoted_users VARCHAR(1000) DEFAULT '',
     userid INT NOT NULL,
     pid INT,
     PRIMARY KEY(cid),
@@ -64,12 +67,13 @@ CREATE TABLE profilepics (
 
 -- sample data to insert:
 
-INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isAdmin, isBanned)
+INSERT INTO users (username, password, email, country, about, totalUpvotes, profilePath, isadmin, isbanned, isguest)
 VALUES
-    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I hate cosc360', 100, 'res/img/Teddy2014.svg', 0, 0),
-    ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0),
-    ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0),
-    ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1);
+    ('Teddy2014', '12345', 'Teddy2014@example.com', 'Canada', 'I love cosc360!', 100, 'res/img/Teddy2014.svg', 0, 0, 0),
+    ('Meerkat', '12345', 'Meerkat@example.com', 'Canada', "Me hehe", 50, 'res/img/Meerkat.svg', 0, 0, 0),
+    ('RedPanda', 'admin', 'RedPanda@example.com', 'USA', "Yeet", 0, 'res/img/RedPanda.svg', 1, 0, 0),
+    ('SeaOtter', '12345', 'SeaOtter@example.com', 'Australia', "We're looking at sea otters", 0, 'res/img/SeaOtter.svg', 0, 1, 0),
+    ('Guest', 'guest', 'guest@example.com', '', " ", 0, 'res/img/Guest.svg', 0, 0, 1);
 
 
 INSERT INTO sublueddits (sid, title, description)
@@ -77,7 +81,7 @@ VALUES
     (1, 'OrangeCentral', 'We love Oranges'),
     (2, 'BananaCentral', 'We love Bananas'),
     (3, 'AppleCentral', 'We love Apples'),
-    (4, 'COSC360Central', 'We hate this course');
+    (4, 'COSC360Central', 'We love this course');
 
 INSERT INTO posts (title, content, link, upvotes, userid, sid)
 VALUES 
@@ -92,4 +96,4 @@ VALUES
     ('I love Oranges too', 10, 1, 1),
     ('I love Bananas too', 5, 2, 2),
     ('I love Apples too', 2, 3, 3),
-    ('I hate COSC 360 too', 0, 4, 4);
+    ('I love COSC 360 too!!!', 0, 4, 4);

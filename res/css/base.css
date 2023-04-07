@@ -35,6 +35,8 @@ body {
     color: #000;
     font-weight: 600;
   }
+
+  
 }
 
 @media (prefers-color-scheme: light) {
@@ -99,7 +101,7 @@ button span {
 .post-title {
   font-size: 1.5em;
   font-weight: 500;
-  line-height: 1em;
+  line-height: 1.3em;
 }
 
 /* new post div */
@@ -109,6 +111,18 @@ button span {
   line-height: 1em;
   margin-bottom: 1em;
 
+}
+
+.post-new select {
+  border-radius: 15px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0.5em;
+  /* inner padding */
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid #ccc;
 }
 
 .post-new textarea {
@@ -148,26 +162,17 @@ button span {
 
 .post .icon {
   margin-left: auto;
-  font-size: 2.5em;
-  color: #017ea4;
-
+  font-size: 2.2rem;
+  font-weight: 350;
+  margin-top: -0.35em;
 }
+
 
 .postlink {
   background-color: #ffb700;
   text-decoration: none;
 }
 
-.dropdown {
-  display: block;
-  text-align: right;
-}
-
-.dropdown .btn {
-  border-radius: 10px;
-  background: grey;
-  padding: 0.5em 1.5em;
-}
 
 #newPost {
   flex-direction: column;
@@ -242,14 +247,35 @@ button span {
   margin: 0 0.25em;
 }
 
-.upvotes a#up {
+.arrow.arrow-clicked-up {
   color: #2382ff;
 }
 
-.upvotes a#down {
+.arrow.arrow-clicked-down {
   color: #ffbe1a;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
 }
 
 #newPostBtn {
   background-color: #00b5ee;
+}
+r
+.bg-body-tertiary {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(248,249,250),var(--bs-bg-opacity))!important;
 }

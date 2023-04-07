@@ -1,13 +1,31 @@
 <?php
-//Check for login
 
 include "connection.php";
 
+//Check for guest
+if (isset($_SESSION['guestError']) && $_SESSION['guestError'] == true) {
+    ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>You are currently logged in as a guest.</strong> Please log in or sign up to access all features.
+        <a href="auth.php" class="alert-link">Log in/sign up here</a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    $_SESSION['guestError'] = false;
+}
+
+//Check for login success
 if ($_SESSION['signupFailed'] == 'true') {
-    echo "<script>alert('Account already exists.');</script>";
+    ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Account already exists.</strong> Please log in or try again with a different email.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
     $_SESSION['failedLogin'] = 'false';
 }
 
+//Check for login success
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
     header('Location: auth.php');
     die();
@@ -15,16 +33,60 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
 
 //Check for post success
 if (isset($_SESSION['posted']) && $_SESSION['posted'] == true) {
+    ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Post successfully created.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
     unset($_SESSION['posted']);
-    echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Post successfully created.');});</script>";
 }
 
 if (isset($_SESSION['posted']) && $_SESSION['posted'] == false) {
+    ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Post could not be created.</strong> Please try again later.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
     unset($_SESSION['posted']);
-    echo "<script>window.addEventListener(\"DOMContentLoaded\", (event) => {alert('Post could not be created.');});</script>";
+}
+// Check for duplicated upvote
+if (isset($_SESSION['duplicatedUpvote']) && $_SESSION['duplicatedUpvote'] == true) {
+    unset($_SESSION['duplicatedUpvote']);
+    ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>You have already upvoted/downvoted this post.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['duplicatedUpvote']);
+}
+
+// Check for subscription success
+
+if (isset($_SESSION['subscribed']) && $_SESSION['subscribed'] == true) {
+    ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>You have subscribe to this Sublueddit!</strong> Welcome to the club!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['subscribed']);
+}
+
+if (isset($_SESSION['subscribed']) && $_SESSION['subscribed'] == false) {
+    ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <Strong>Succesfully unsubscribed from this Sublueddit.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['subscribed']);
 }
 
 ?>
+
 
 <meta charset="utf-8" />
 
