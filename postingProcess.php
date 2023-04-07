@@ -5,7 +5,7 @@ include "include/connection.php";
 $title = $_POST['newTitle'];
 $description = $_POST['newDescription'];
 $userid = $_SESSION['userid'];
-$sid = $_POST['sid'];
+$sid = $_POST['sublueddit'];
 $link = $_POST['newLink'];
 
 //to prevent form mysqli injection  
@@ -20,9 +20,15 @@ $link = mysqli_real_escape_string($conn, $link);
 //Insert into database and determine if successful
 //For now all posts go into the subblueddit with ID 1,
 //but this should be changed once subblueddits work. 
-
-$sql = "INSERT INTO posts (title, content, userid, sid, link)
+if (!empty($link)){
+    $sql = "INSERT INTO posts (title, content, userid, sid, link)
     Values ('$title', '$description', $userid, $sid, '$link')";
+}
+else {
+    $sql = "INSERT INTO posts (title, content, userid, sid)
+    VALUES ('$title','$description', $userid, $sid);";
+    echo $sql;
+}
 $success = mysqli_query($conn, $sql);
 
 
@@ -34,8 +40,8 @@ if (!$success) {
     die();
 } else {
     //Track usage
-    $sql = "INSERT INTO usageTracking (type, sid)
-    Values ('POST', $sid)";
+    $sql = "INSERT INTO usageTracking (type, sid, entryDate)
+    Values ('POST', $sid, CURDATE())";
     mysqli_query($conn, $sql);
 
     $_SESSION['posted'] = true;
