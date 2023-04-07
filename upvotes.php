@@ -1,4 +1,5 @@
 <?php
+
 include "include/connection.php";
 
 // Check if connection to database is successful
@@ -20,8 +21,16 @@ if ($_SESSION['isguest'] == true) {
 $stmt = $conn->prepare("SELECT upvoted_users, sid FROM posts WHERE pid = ?");
 $stmt->bind_param("i", $pid);
 $stmt->execute();
-$upvoted_users = $stmt->get_result()->fetch_assoc()['upvoted_users'];
-$sid = $stmt->get_result()->fetch_assoc()['sid'];
+$result = $stmt->get_result();
+
+if (!$result) {
+    exit("<p>Error retrieving upvoted users for post $pid: " . $conn->error . "</p>");
+}
+
+$row = $result->fetch_assoc();
+$upvoted_users = $row['upvoted_users'];
+$sid = $row['sid'];
+
 if (strpos($upvoted_users, $userid) !== false) {
     $_SESSION['duplicatedUpvote'] = True;
     exit(header("Location: " . $_SERVER['HTTP_REFERER']));
@@ -41,9 +50,9 @@ if ($upvoted) {
     $conn->query("UPDATE posts SET upvotes = GREATEST(upvotes - 1, 0) WHERE pid = $pid");
     $conn->query("UPDATE users SET totalUpvotes = GREATEST(totalUpvotes - 1, 0) WHERE userid = (SELECT userid FROM posts WHERE pid = $pid)");
 }
+
 //Track usage
-$sql = "INSERT INTO usageTracking (type, sid, entryDate)
-Values ('VOTES', $sid, CURDATE())";
+$sql = "INSERT INTO usageTracking (type, sid, entryDate) Values ('VOTES', $sid, CURDATE())";
 mysqli_query($conn, $sql);
 
 // Add user to upvoted_users list
@@ -51,6 +60,5 @@ $conn->query("UPDATE posts SET upvoted_users = CONCAT(upvoted_users, '$userid,')
 
 // Close the connection and redirect to the last page
 $conn->close();
-exit(header("Location: " . $_SERVER['HTTP_REFERER']));
-
+header("Location: " . $_SERVER['HTTP_REFERER']);
 ?>
