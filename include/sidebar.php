@@ -82,7 +82,7 @@ $profilePath = $_SESSION['profilePath'];
                     session_start();
                     if (isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == true) {
                         ?>
-                        <li class="list-unstyled dropdown-item-danger border-0 text-dark bg-transparent" style="onhover: #ff4500;">
+                        <li class="list-unstyled bg-transparent border-0 pb-2" style="onhover: #ff4500;">
                           <a class="text-dark" href="monthlyActivity.php">Activity Tracking</a>
                         </li>
                         <?php

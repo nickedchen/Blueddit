@@ -14,7 +14,7 @@
 
   <body>
     <?php
-      if (!isset($_SESSION['admin']) || $_SESSION['admin'] == false) {
+      if (!isset($_SESSION['isadmin']) || $_SESSION['isadmin'] == false) {
         header('Location: index.php');
         die();
       }
