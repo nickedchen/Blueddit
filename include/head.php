@@ -68,7 +68,7 @@ if (isset($_SESSION['duplicatedUpvote']) && $_SESSION['duplicatedUpvote'] == tru
 if (isset($_SESSION['subscribed']) && $_SESSION['subscribed'] == true) {
     ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>You have subscribe to this Sublueddit!</strong> Welcome to the club!
+        <strong>You have subscribed to this Sublueddit!</strong> Welcome to the club!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php

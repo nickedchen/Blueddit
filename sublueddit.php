@@ -5,9 +5,10 @@
 <head>
 
     <?php
+    include 'include/head.php';
     $sid = $_GET['sid'];
     $userid = $_SESSION['userid'];
-    include 'include/head.php';
+    
     //get all sublueddit details
     $sql = "SELECT s.sid, s.title, s.description
             FROM sublueddits s
@@ -17,18 +18,19 @@
     mysqli_stmt_execute($result);
     mysqli_stmt_bind_result($result, $sid, $sname, $sdescription);
     mysqli_stmt_fetch($result);
+    mysqli_stmt_close($result);
 
     // check if user is already subscribed by checking sid is in user's subscribed list subscribedSublueddits
     
     $sql = "SELECT subscribedSublueddits FROM users WHERE userid = ?;";
-    $result = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($result, 'i', $userid);
-    mysqli_stmt_execute($result);
-    mysqli_stmt_bind_result($result, $subscribedSublueddits);
-    mysqli_stmt_fetch($result);
-    mysqli_stmt_close($result);
+    $result2 = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($result2, 'i', $userid);
+    mysqli_stmt_execute($result2);
+    mysqli_stmt_bind_result($result2, $subscribedSublueddits);
+    mysqli_stmt_fetch($result2);
+    mysqli_stmt_close($result2);
 
-    if (strpos($subscribedSublueddits, $sid) !== False) {
+    if (strpos($subscribedSublueddits, $sid."") > -1) {
         $subscribed = True;
     } else {
         $subscribed = False;
@@ -77,12 +79,12 @@
                             <?php if ($subscribed): ?>
                                 <button class="btn btn-outline-secondary rounded-pill w-auto text-light" type="button"
                                     id="subscribeBtn" onclick="window.location.href='subscribe.php?sid=<?= $sid ?>'">
-                                    Unsubscribe
+                                    Leave
                                 </button>
                             <?php else: ?>
                                 <button class="btn btn-secondary rounded-pill w-auto " type="button" id="subscribeBtn"
                                     onclick="window.location.href='subscribe.php?sid=<?= $sid ?>'">
-                                    Subscribe
+                                    Join
                                 </button>
                             <?php endif; ?>
                         </div>
