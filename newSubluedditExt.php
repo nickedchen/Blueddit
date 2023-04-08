@@ -23,6 +23,10 @@
         $result = mysqli_query($conn, $sql);
         if (!$result) {
             $_SESSION['subluedditError'] = "Error creating sublueddit";
+        } else{
+            $sql = "INSERT INTO usageTracking (type, sid, entryDate)
+            Values ('NEWSUB', ".$post['sid'].", CURDATE())";
+            mysqli_query($conn, $sql);
         }
         //redirect to sublueddit page
         //get new sublueddit id

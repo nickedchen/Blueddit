@@ -20,6 +20,10 @@
     mysqli_stmt_fetch($result);
     mysqli_stmt_close($result);
 
+    $sql = "INSERT INTO usageTracking (type, sid, entryDate)
+  Values ('VIEWSUB', $sid, CURDATE())";
+  mysqli_query($conn, $sql);
+
     // check if user is already subscribed by checking sid is in user's subscribed list subscribedSublueddits
     
     $sql = "SELECT subscribedSublueddits FROM users WHERE userid = ?;";
