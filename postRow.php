@@ -51,10 +51,13 @@
             }
             ?>
         </p>
+
+
+        <!-- Remove Post-->
         <?php if ($_SESSION['isadmin'] == true) { ?>
-            <form method="post" action="deletePost.php">
-                <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
-                <span class="badge rounded-pill bg-danger px-3 py-2" type="submit" name="delete">Remove</span>
+            <a  href="deletePost.php?pid=<?= $post['pid'] ?>">
+            <span class="badge rounded-pill bg-danger px-2 py-2">Remove</span>
+            </a>
         <?php } ?>
     </div>
     <div class="icon"><a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>">→</a></div>

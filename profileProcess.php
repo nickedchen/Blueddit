@@ -6,7 +6,7 @@ include 'include/connection.php';
 // get the form data
 $username = $_POST['username'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 $about = $_POST['about'];
 $country = $_POST['country'];
 $profilepath = $_POST['profilepath'];

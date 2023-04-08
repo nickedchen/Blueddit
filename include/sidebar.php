@@ -6,7 +6,7 @@ $profilePath = $_SESSION['profilePath'];
 <div class="col-md-3 mb-4" id>
     <div class="d-flex flex-column flex-shrink-1">
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none pb-4">
-            <span class="fs-6 fw-bold">Subscriptions</span>
+            <span class="fs-6 fw-bold">Your Sublueddits</span>
         </a>
         <ul class="nav flex-column mb-auto pt-2">
             <?php

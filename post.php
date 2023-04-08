@@ -123,7 +123,7 @@
                   </span>
               <?php } ?>
 
-              <div id="<?= $post['pid'] ?>" class="upvotes">
+              <div id="<?= $post['pid'] ?>" class="upvotes fs-6">
                 <form method="post" action="upvotes.php">
                   <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
                   <input type="hidden" name="upvoted" value="1">
@@ -161,7 +161,6 @@
                       href="editPost.php?pid=<?= $post['pid'] ?>">Edit</a></span>
                   <span class="badge rounded-pill bg-danger px-3 py-2"><a class="text-light text-decoration-none"
                       href="deletePost.php?pid=<?= $post['pid'] ?>">Delete</a></span>
-
                 <?php } else if ($_SESSION['isadmin'] == true) { ?>
                     <span class="badge rounded-pill bg-danger px-3 py-2"><a class="text-light text-decoration-none"
                         href="deletePost.php?pid=<?= $post['pid'] ?>">Delete</a></span>

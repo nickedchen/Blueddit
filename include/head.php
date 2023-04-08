@@ -85,8 +85,17 @@ if (isset($_SESSION['subscribed']) && $_SESSION['subscribed'] == false) {
     unset($_SESSION['subscribed']);
 }
 
+// Check for edit success
+if (isset($_SESSION['editError']) && $_SESSION['editError'] == true) {
+    ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Post could not be edited.</strong> Please try again later.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['editError']);
+}
 ?>
-
 
 <meta charset="utf-8" />
 

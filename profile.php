@@ -92,7 +92,7 @@
                 <div class="mb-3 pb-2">
                     <label for="password" class="form-label h6 text-dark pb-2">Password</label>
                     <input type="password" class="form-control border-2" id="password" name="password"
-                        placeholder="<?php echo $user['password']; ?>" />
+                        placeholder="***" />
                 </div>
 
                 <!-- Country -->

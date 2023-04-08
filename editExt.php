@@ -10,7 +10,7 @@ if (isset($_POST['pid'])) {
     $sql = "UPDATE posts SET title = '$title', link = '$link', content = '$content' WHERE pid = $pid";
     $result = mysqli_query($conn, $sql);
     if (!$result) {
-        $_SESSION['editPostError'] = "Error editing post";
+        $_SESSION['editError'] = true;
     }
     // redirect to post page
     header("Location: post.php?pid=$pid");
@@ -25,7 +25,7 @@ if (isset($_POST['cid'])) {
     $sql = "UPDATE comments SET content = '$content' WHERE cid = $cid";
     $result = mysqli_query($conn, $sql);
     if (!$result) {
-        $_SESSION['editCommentError'] = "Error editing comment";
+        $_SESSION['editError'] = true;
     }
     // get the corresponding pid
     $sql = "SELECT pid FROM comments WHERE cid = $cid";
