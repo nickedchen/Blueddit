@@ -85,7 +85,7 @@ VALUES
     ('Guest', '084e0343a0486ff05530df6c705c8bb4', 'guest@example.com', 'Canada', " ", 0, 'res/img/Guest.svg', 0, 0, 1);
 
 
-INSERT INTO sublueddits (sid, title, description)
+INSERT INTO sublueddits (title, description)
 VALUES 
     ('OrangeCentral', 'We love Oranges'),
     ('BananaCentral', 'We love Bananas'),
