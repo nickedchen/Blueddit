@@ -1,75 +1,66 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/enf2qyfT)
 <picture>
-  <img src="https://user-images.githubusercontent.com/88886207/217671905-3e9c7b3d-d6de-4821-85b6-af54b38244e0.png" alt="Blueddit Logo" height="120">
+  <img src="https://user-images.githubusercontent.com/88886207/217671905-3e9c7b3d-d6de-4821-85b6-af54b38244e0.png" alt="Blueddit Logo" height="100">
 </picture>
 
 # Blueddit
 
-This is a ongoing course project for **`COSC360 - Web Programming`**
+A Reddit clone built with PHP, HTML, CSS, and Javascript.
 
-Webpage designs on Figma: <https://www.figma.com/file/GZYqqk1sMZQ3e82bNPe0B5/Blueddit?node-id=0%3A1&t=lmrhMjvuA7q9unWG-1>
+> Check out the webpage designs and Sitemaps on [Figma]("https://www.figma.com/file/GZYqqk1sMZQ3e82bNPe0B5/Blueddit?node-id=0%3A1&t=lmrhMjvuA7q9unWG-1")
 
 ## Description
 
-Blueddit serves as an online discussion platform where users can share content such as text posts, links, and images, and participate in discussions on a wide variety of topics, similar to Reddit. Users can browse different categories of content posts, and each community in each category is referred to as a `Bubble` (the name may change in the future).
+Blueddit serves as an online discussion platform where users can share content such as text posts, links, and images, and participate in discussions on a wide variety of topics, similar to Reddit. Users can browse different categories of content posts, and each community in each category is referred to as a `Sublueddit`.
 
 ### Permissions and Access
 
 **Registered users**: Registered users have the ability to `post`, `edit`, and `comment` on posts and browse content on the `front page`. They also have access to their `profile page`, where they can customize their profile and page settings.
 
-**Anonymous users**: Anonymous users can only access the `front page` and browse other users' posts. Any attempt to post, comment, or access the settings/profile tab will direct the user to the `registration page`.
+**Guest users**: Guest users can only access the `front page` and browse other users' posts. Any attempt to post, comment, or access the settings/profile tab will direct the user to the `registration page`.
 
-## Upcoming features
+**Moderators/admin**: Moderators have the ability to `edit`, `delete`, and `ban` users. They also have access to the `moderation page`, where they can manage the content of the website.
 
-### Basic functionalities
+## Features
 
-#### Here are some key features for our project:
+1. **Home Page**: Display a collection of curated or recently posted forum posts. The page can be divided into sections and should refresh dynamically. The content on this page should only display post titles, along with a short preview of the post description (2-3 lines) and a post image if available.
 
-1. **Feed Page**: Display a collection of posts that are curated or posted recently on the forum. The page can be divided into sections and refresh dynamically. Contents on this page should only provide titles of the posts, each with a short preview of post description (2-3 lines) and a post image if exists.
-1. **Post Page**: Display a single post, along with its details, such as the author, date, and time of creation, number of upvotes and downvotes, and comments. Registered users can add comments to the post, while anonymous users can only view the post and its details.
-1. **Profile Tab**: Display information about a registered user, such as their name, avatar, number of posts, and comments. Registered users can access their own profile and edit their information, while anonymous users can view the profiles of registered users.
-1. **Tab Bar with Sections**:Implement a tab bar or navigation menu to allow users to quickly access different sections of the website, such as the feed page, categories, user profiles, etc.
-1. **Authentication**: Allow users to create an account and log in to the website to post stories and make comments.
-1. **Create Post**: Allow registered users to create posts with a title, description, and optional images or videos.
-1. **Comment Section**: Allow users to add comments to posts, and reply to other comments.
-1. **User Profiles**: Provide user profiles where users can manage their account information and view their activity on the website.
-1. **Search Function**: Provide a search bar or search options to allow users to search for posts based on keywords or categories.
-1. **Categories**: Implement categories to categorize posts and make it easier for users to find relevant content.
+2. **Post Page**: Display a single post along with its details such as the author's name, date and time of creation, number of upvotes and downvotes, and comments. Registered users can add comments to the post while anonymous users can only view the post and its details.
 
-#### Other key features to include:
+3. **Profile Tab**: Display information about registered users such as their name, avatar, number of posts, and comments. Registered users can access and edit their own profiles, while anonymous users can only view profiles of registered users.
 
- - Search function for all posts
- - Login page with registration option
- - Left navigation panel to browse communities
- - Input validation with Regex
- - Backend and server-side Scripting with PHP
- - Data storage with SQL and Docker
- - Privacy and security implementation
- - Responsive design
- - User profile page and Settings tab
- - Progressive Web Application support
- - Dynamically refreshes posts
- - Post with images
- - Consistent web page design
- - Post sorting by dates
- - Robust error handling
- - Comment and post system
- - Moderation control
+4. **Navigation Bar**: Implement a tab bar or navigation menu that allows users to quickly access different sections of the website, such as the feed page, categories, user profiles, etc.
 
-### Advanced functionalities
+5. **Authentication**: Allow users to create an account and log in to the website to post stories and make comments.
 
-#### Some additional features to implement:
+6. **Create Post**: Allow registered users to create posts with a title, description, and optional images or videos.
 
-1. Upvoting and downvoting: Allow users to upvote or downvote posts and comments, to indicate their approval or disapproval.
-1. Real time notifications: Provide notifications for users to receive updates on new posts and comments, and to be notified when their posts or comments receive upvotes or downvotes.
-1. Responsive design: Ensure that the website is optimized for different screen sizes and devices, to provide a consistent and user-friendly experience on all devices.
+7. **Commenting**: Allow users to add comments to posts and reply to other comments.
 
-#### Alongside with:
+8. **User Profiles**: Provide user profiles where users can manage their account information and view their activity on the website.
 
- - fluid animations using Javascript
- - SMS/Email registration
- - customizable homepage styles
- - Privacy permission controls
+9. **Search Function**: Provide a search bar or search options that allow users to search for posts based on keywords or categories.
+
+10. **Subreddits**: Implement categories to categorize posts and make it easier for users to find relevant content.
+
+### Additional Features
+
+1. Search function for all posts
+2. Login page with registration option
+3. Left sidebar for browsing communities
+4. Right panel to display posting controls
+5. Input validation using JavaScript
+6. Backend and server-side scripting with PHP
+7. Database implementation with MySQL
+8. Prevention of SQL injection
+9. Responsive design
+10. Asynchronous page loading
+11. Support for image uploads
+12. Consistent webpage design
+13. Sorting of posts by upvote count
+14. Robust error handling
+15. Comment and post system
+16. Moderation control
+
 
 ## Contributors
 

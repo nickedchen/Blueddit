@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="ml-2 mt-4">
-                        <h4> Recent Posts</h4>
+                        <h4 text-dark> Recent Posts</h4>
 
                         <?php
                         // get posts from the user
