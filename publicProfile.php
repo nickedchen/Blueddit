@@ -15,13 +15,13 @@
     $userid = mysqli_real_escape_string($conn, $userid);
 
     //get user details
-    $sql = "SELECT userid, username, email, about, profilepath, isguest, isadmin, totalUpvotes
+    $sql = "SELECT userid, username, email, about, profilepath, isguest, isadmin, totalUpvotes, isbanned
             FROM users
             WHERE userid = $userid;"
     ;
     $result = mysqli_prepare($conn, $sql);
     mysqli_stmt_execute($result);
-    mysqli_stmt_bind_result($result, $userid, $username, $email, $about, $profilepath, $isguest, $isadmin, $totalUpvotes);
+    mysqli_stmt_bind_result($result, $userid, $username, $email, $about, $profilepath, $isguest, $isadmin, $totalUpvotes, $isbanned );
     while (mysqli_stmt_fetch($result)) {
         $user = array(
             'userid' => $userid,
@@ -31,7 +31,8 @@
             'profilepath' => $profilepath,
             'isguest' => $isguest,
             'isadmin' => $isadmin,
-            'totalUpvotes' => $totalUpvotes
+            'totalUpvotes' => $totalUpvotes, 
+            'isbanned' => $isbanned
         );
     }
     ?>
@@ -73,6 +74,10 @@
                                     <?php if ($user['isadmin']) { ?>
                                         <span class="badge rounded-pill bg-danger">Admin</span>
                                     <?php } ?>
+                                    <!-- if is banned user, display a banned badge -->
+                                    <?php if ($user['isbanned'] == 1) { ?>
+                                        <span class="badge rounded-pill bg-secondary">Banned</span>
+                                    <?php } ?>
 
                                     <!-- display total upvotes -->
                                     <p class="mt-2">
@@ -84,6 +89,10 @@
                                     <p class="mt-2">
                                         <?php echo $user['about']; ?>
                                     </p>
+                                    <!-- if signed in as admin, display a button to ban user -->
+                                    <?php if (isset($_SESSION['isadmin']) && $_SESSION['isadmin']) { ?>
+                                        <a href="banUser.php?userid=<?php echo $user['userid']; ?>" class="btn btn-danger">Ban/Unbanned User</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

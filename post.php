@@ -228,16 +228,16 @@
             </div>
           <?php }
 
-          if (!isset($_SESSION['isguest']) || $_SESSION['isguest'] == false){
-          ?>
+          if (!isset($_SESSION['isguest']) || $_SESSION['isguest'] == false) {
+            ?>
 
-          <div class="post-new mt-4">
-            <form action="addComment.php" method="post">
-              <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
-              <textarea name="comment" class="form-control" rows="2" placeholder="Write a comment..."></textarea>
-              <button type="submit" class="btn btn-primary mt-2">Submit</button>
-            </form>
-          </div>
+            <div class="post-new mt-4">
+              <form action="addComment.php" method="post">
+                <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
+                <textarea name="comment" class="form-control" rows="2" placeholder="Write a comment..."></textarea>
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+              </form>
+            </div>
 
           <?php } ?>
 
@@ -261,6 +261,33 @@
   function markArrowClickedDown(arrow) {
     arrow.classList.toggle('arrow-clicked-down');
   }
+
+  (function commentUpdate() {
+    $.ajax({
+      url: 'editPost.php?cid=<?= $post['cid'] ?>',
+      success: function (data) {
+        $('.comments').html(data);
+      },
+      complete: function () {
+        // Schedule the next request when the current one's complete
+        setTimeout(worker, 5000);
+      }
+    });
+  })();
+
+  (function postUpdate() {
+    $.ajax({
+      url: 'editPost.php?pid=<?= $post['pid'] ?>',
+      success: function (data) {
+        $('.post').html(data);
+      },
+      complete: function () {
+        // Schedule the next request when the current one's complete
+        setTimeout(worker, 5000);
+      }
+    });
+  })();
+
 </script>
 
 </html>
