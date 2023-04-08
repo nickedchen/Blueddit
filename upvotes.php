@@ -17,15 +17,20 @@ if ($_SESSION['isguest'] == true) {
 }
 
 // Check if user has already upvoted the post
-$stmt = $conn->prepare("SELECT upvoted_users, sid FROM posts WHERE pid = ?");
+$stmt = $conn->prepare("SELECT upvoted_users FROM posts WHERE pid = ?");
 $stmt->bind_param("i", $pid);
 $stmt->execute();
 $upvoted_users = $stmt->get_result()->fetch_assoc()['upvoted_users'];
-$sid = $stmt->get_result()->fetch_assoc()['sid'];
-if (strpos($upvoted_users, $userid) !== false) {
+if (strpos($upvoted_users, $userid) > -1) {
     $_SESSION['duplicatedUpvote'] = True;
     exit(header("Location: " . $_SERVER['HTTP_REFERER']));
 }
+
+//Get SID
+$stmt = $conn->prepare("SELECT sid FROM posts WHERE pid = ?");
+$stmt->bind_param("i", $pid);
+$stmt->execute();
+$sid = $stmt->get_result()->fetch_assoc()['sid'];
 
 // Check if post is upvoted or downvoted
 $upvoted = isset($_POST['upvoted']);
