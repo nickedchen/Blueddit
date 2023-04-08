@@ -25,7 +25,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE sublueddits (
-    sid INT UNIQUE NOT NULL,
+    sid INT UNIQUE NOT NULL AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
     description VARCHAR(500),
     PRIMARY KEY(sid)
@@ -87,10 +87,10 @@ VALUES
 
 INSERT INTO sublueddits (sid, title, description)
 VALUES 
-    (1, 'OrangeCentral', 'We love Oranges'),
-    (2, 'BananaCentral', 'We love Bananas'),
-    (3, 'AppleCentral', 'We love Apples'),
-    (4, 'COSC360Central', 'We love this course');
+    ('OrangeCentral', 'We love Oranges'),
+    ('BananaCentral', 'We love Bananas'),
+    ('AppleCentral', 'We love Apples'),
+    ('COSC360Central', 'We love this course');
 
 INSERT INTO posts (title, content, link, upvotes, userid, sid)
 VALUES 
