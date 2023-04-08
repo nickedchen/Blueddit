@@ -54,7 +54,7 @@
               <?php
               echo "<select name='sublueddit' id='sid' class='form-select my-2 bg-transparent text-dark' required>";
               foreach ($sublueddits as $sublueddit) {
-                echo "<option value='" . $sublueddit['sid'] . "'>" . $sublueddit['name'] . "</option>";
+                echo "<option value='" . $sublueddit['sid'] . "' style='color:black;'>" . $sublueddit['name'] . "</option>";
               }
               echo "</select>";
               ?>
