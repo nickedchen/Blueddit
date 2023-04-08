@@ -55,9 +55,9 @@ $profilePath = $_SESSION['profilePath'];
         </ul>
         <hr class="mt-5 w-75 text-dark" />
         <div class="align-self-baseline my-2">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none" id="dropdownUser2"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="<?php echo $profilePath ?>" alt="" width="32" height="32" class="rounded-circle me-2" />
+            <a href="publicProfile.php?userid=<?= $_SESSION['userid'] ?>"
+                class="d-flex align-items-center link-dark text-decoration-none">
+                <img src="<?= $profilePath ?>" alt="" width="32" height="32" class="rounded-circle me-2" />
                 <strong>
                     <?= $username ?>
                 </strong>
@@ -79,14 +79,14 @@ $profilePath = $_SESSION['profilePath'];
                     <a class="text-dark" href="profile.php">Profile Settings</a>
                 </li>
                 <?php
-                    session_start();
-                    if (isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == true) {
-                        ?>
-                        <li class="list-unstyled bg-transparent border-0 pb-2" style="onhover: #ff4500;">
-                          <a class="text-dark" href="monthlyActivity.php">Activity Tracking</a>
-                        </li>
-                        <?php
-                    }
+                session_start();
+                if (isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == true) {
+                    ?>
+                    <li class="list-unstyled bg-transparent border-0 pb-2" style="onhover: #ff4500;">
+                        <a class="text-dark" href="monthlyActivity.php">Activity Tracking</a>
+                    </li>
+                    <?php
+                }
                 ?>
                 <li class="list-unstyled dropdown-item-danger border-0 text-dark bg-transparent" style="onhover: #ff4500;">
                     <a class="text-dark" href="logout.php">Sign Out</a>

@@ -15,13 +15,13 @@
     $userid = mysqli_real_escape_string($conn, $userid);
 
     //get user details
-    $sql = "SELECT userid, username, email, about, profilepath, isguest, isadmin
+    $sql = "SELECT userid, username, email, about, profilepath, isguest, isadmin, totalUpvotes
             FROM users
             WHERE userid = $userid;"
     ;
     $result = mysqli_prepare($conn, $sql);
     mysqli_stmt_execute($result);
-    mysqli_stmt_bind_result($result, $userid, $username, $email, $about, $profilepath, $isguest, $isadmin);
+    mysqli_stmt_bind_result($result, $userid, $username, $email, $about, $profilepath, $isguest, $isadmin, $totalUpvotes);
     while (mysqli_stmt_fetch($result)) {
         $user = array(
             'userid' => $userid,
@@ -31,6 +31,7 @@
             'profilepath' => $profilepath,
             'isguest' => $isguest,
             'isadmin' => $isadmin,
+            'totalUpvotes' => $totalUpvotes
         );
     }
     ?>
@@ -53,7 +54,11 @@
                 <?php include 'include/sidebar.php'; ?>
                 <!-- Posts -->
                 <div class="col-md-6">
-                    <div class="card " style="border-radius: 1.5rem;">
+                    <!--back button-->
+                    <a href="javascript:history.back()" role="button" class="btn-block text-dark col-md-1 mb-1 text-dark text-decoration-none fs-6">
+                        ← Back
+                    </a>
+                    <div class="card my-4" style="border-radius: 1.5rem;">
                         <div class="card-body pt-4">
                             <div class="row">
                                 <div class="col-md-2">
@@ -68,6 +73,14 @@
                                     <?php if ($user['isadmin']) { ?>
                                         <span class="badge rounded-pill bg-danger">Admin</span>
                                     <?php } ?>
+
+                                    <!-- display total upvotes -->
+                                    <p class="mt-2">
+                                        <span class="badge rounded-pill bg-primary">
+                                            <?php echo $user['totalUpvotes']; ?> 
+                                        </span>
+                                        Total Upvotes
+                                    </p>
                                     <p class="mt-2">
                                         <?php echo $user['about']; ?>
                                     </p>
@@ -84,8 +97,7 @@
                                 FROM posts p
                                 INNER JOIN sublueddits s ON p.sid = s.sid
                                 INNER JOIN users u ON p.userid = u.userid
-                                WHERE p.userid = $userid
-                                ORDER BY p.upvotes DESC";
+                                WHERE p.userid = $userid;";
 
                         $result = mysqli_prepare($conn, $sql);
                         mysqli_stmt_execute($result);
@@ -105,7 +117,7 @@
                             ]);
                         }
                         foreach ($posts as $post) {
-                            include 'include/post.php';
+                            include 'postRow.php';
                         }
                         ?>
                     </div>

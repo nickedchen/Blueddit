@@ -81,12 +81,12 @@
                         <div class="col-md-2 align-self-end">
                             <!-- Check if user is subscribed to sublueddit -->
                             <?php if ($subscribed): ?>
-                                <button class="btn btn-outline-secondary rounded-pill w-auto text-light" type="button"
+                                <button class="btn btn-outline-secondary rounded-pill  text-dark" type="button"
                                     id="subscribeBtn" onclick="window.location.href='subscribe.php?sid=<?= $sid ?>'">
                                     Leave
                                 </button>
                             <?php else: ?>
-                                <button class="btn btn-secondary rounded-pill w-auto " type="button" id="subscribeBtn"
+                                <button class="btn btn-secondary rounded-pill " type="button" id="subscribeBtn"
                                     onclick="window.location.href='subscribe.php?sid=<?= $sid ?>'">
                                     Join
                                 </button>
