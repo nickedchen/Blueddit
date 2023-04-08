@@ -227,6 +227,8 @@
               </div>
             </div>
           <?php }
+
+          if (!isset($_SESSION['isguest']) || $_SESSION['isguest'] == false){
           ?>
 
           <div class="post-new mt-4">
@@ -236,6 +238,8 @@
               <button type="submit" class="btn btn-primary mt-2">Submit</button>
             </form>
           </div>
+
+          <?php } ?>
 
         </div>
 
