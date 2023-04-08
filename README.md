@@ -1,16 +1,17 @@
 <picture>
-  <img src="https://user-images.githubusercontent.com/88886207/217671905-3e9c7b3d-d6de-4821-85b6-af54b38244e0.png" alt="Blueddit Logo" height="100">
+  <img src="https://user-images.githubusercontent.com/88886207/230703613-26b3d5a3-7cfb-4465-b202-f28d30fe69b7.svg" alt="Blueddit Logo" height="120">
 </picture>
 
 # Blueddit
 
-A Reddit clone built with PHP, HTML, CSS, and Javascript.
+A Reddit clone purely built with PHP, HTML, CSS, and Javascript.
 
-> Check out the webpage designs and Sitemaps on [Figma]("https://www.figma.com/file/GZYqqk1sMZQ3e82bNPe0B5/Blueddit?node-id=0%3A1&t=lmrhMjvuA7q9unWG-1")
+> Check out the Webpage Designs and Sitemaps on [Figma](https://www.figma.com/file/GZYqqk1sMZQ3e82bNPe0B5/Blueddit?node-id=0%3A1&t=lmrhMjvuA7q9unWG-1)
 
 ## Description
 
 Blueddit serves as an online discussion platform where users can share content such as text posts, links, and images, and participate in discussions on a wide variety of topics, similar to Reddit. Users can browse different categories of content posts, and each community in each category is referred to as a `Sublueddit`.
+
 
 ### Permissions and Access
 
@@ -18,7 +19,12 @@ Blueddit serves as an online discussion platform where users can share content s
 
 **Guest users**: Guest users can only access the `front page` and browse other users' posts. Any attempt to post, comment, or access the settings/profile tab will direct the user to the `registration page`.
 
-**Moderators/admin**: Moderators have the ability to `edit`, `delete`, and `ban` users. They also have access to the `moderation page`, where they can manage the content of the website.
+**Moderators/admins**: Moderators have the ability to `edit`, `delete`, and `ban` users. They also have access to the `moderation page`, where they can manage the content of the website.
+
+
+## Preview
+
+<img width="1438" alt="image" src="https://user-images.githubusercontent.com/88886207/230703177-e242dc9a-52ad-44b3-aaeb-977f06c12cb8.png">
 
 ## Features
 
@@ -53,13 +59,15 @@ Blueddit serves as an online discussion platform where users can share content s
 7. Database implementation with MySQL
 8. Prevention of SQL injection
 9. Responsive design
-10. Asynchronous page loading
+10. Asynchronous page loading with ajax
 11. Support for image uploads
 12. Consistent webpage design
 13. Sorting of posts by upvote count
 14. Robust error handling
 15. Comment and post system
 16. Moderation control
+17. Site analytics
+18. Dark mode support
 
 
 ## Contributors
