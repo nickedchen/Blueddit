@@ -174,10 +174,10 @@
           <?php
           // display comments
           foreach ($comments as $comment) { ?>
-            <div class="post mt-4">
+            <div class="post mt-4 comment" id = "<?= $comment['cid'] ?>">
               <img src="<?= $comment['comment_profilepath'] ?>" alt="ppl" width="40" height="40"
                 class="rounded-circle me-2" />
-              <div class="content">
+              <div class="content" id = "content<?= $comment['cid'] ?>">
 
                 <span class="post-text fs-5 fw-600">
                   <?= $comment['comment_content'] ?>
@@ -261,6 +261,24 @@
   function markArrowClickedDown(arrow) {
     arrow.classList.toggle('arrow-clicked-down');
   }
+
+  //Collapse comments
+  window.addEventListener('DOMContentLoaded', () => {
+    var comments = document.getElementsByClassName("comment");
+
+    for (var i = 0; i < comments.length; i++) {
+      comments[i].addEventListener('click', function (event) {
+        var commentID = event.target.id;
+        var commentContent = document.getElementById("content" + commentID);
+        if (commentContent.style.display === "none"){
+          commentContent.style.display = "flex";
+        }else{
+          commentContent.style.display = "none";
+        }
+      });
+    }
+    
+  });
 
   (function commentUpdate() {
     $.ajax({
