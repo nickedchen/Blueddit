@@ -68,6 +68,7 @@ Blueddit serves as an online discussion platform where users can share content s
 16. Moderation control
 17. Site analytics
 18. Dark mode support
+19. Collapsible Comments
 
 
 ## Contributors
