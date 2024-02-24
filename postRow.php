@@ -9,10 +9,10 @@
         </span>
         <?php
         // if link is a picture
-        if ($post['link'] != null && (strpos($post['link'], '.jpg') !== false || strpos($post['link'], '.png') !== false)) {
+        if ($post['link'] != null && (strpos($post['link'], '.jpg') !== false || strpos($post['link'], '.png') !== false || strpos($post['link'], '.webp') !== false)) {
             ?>
             <span class="post-link">
-                <img src="<?= $post['link'] ?>" alt="post image" width="100%" height="auto" />
+                <a href="<?= $post['link'] ?>" class="text-muted"><img src="<?= $post['link'] ?>" alt="post image" width="100%" height="auto" /></a>
             </span>
             <?php
         } else if ($post['link'] != null) {
