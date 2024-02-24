@@ -2,8 +2,10 @@
 
 <!DOCTYPE html>
 <html lang="en" class="home">
-
 <head>
+  <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        crossorigin="anonymous"></script>
   <?php include 'include/head.php'; ?>
   <title>Home - Blueddit</title>
 </head>

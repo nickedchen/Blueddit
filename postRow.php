@@ -12,7 +12,7 @@
         if ($post['link'] != null && (strpos($post['link'], '.jpg') !== false || strpos($post['link'], '.png') !== false || strpos($post['link'], '.webp') !== false)) {
             ?>
             <span class="post-link">
-                <a href="<?= $post['link'] ?>" class="text-muted"><img src="<?= $post['link'] ?>" alt="post image" width="100%" height="auto" /></a>
+                <a target="_blank" href="<?= $post['link'] ?>" data-fancybox class="text-muted"><img src="<?= $post['link'] ?>" alt="post image" width="100%" height="auto" /></a>
             </span>
             <?php
         } else if ($post['link'] != null) {
@@ -23,6 +23,22 @@
             <?php
         }
         ?>
+
+
+<?php
+        // if link is a video
+        if ($post['link'] != null && (strpos($post['link'], '.mp4') !== false || strpos($post['link'], '.mpeg') !== false || strpos($post['link'], '.ogg') !== false)) {
+            ?>
+            <span class="post-link">
+                 <video controls>
+  <source src="<?= $post['link'] ?>" type="video/mp4">
+</video> 
+            </span>
+            <?php
+        
+        }
+        ?>
+
         <div id="<?= $post['pid'] ?>" class="upvotes fs-6">
             <form method="post" action="upvotes.php">
                 <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
