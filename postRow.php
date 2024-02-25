@@ -1,18 +1,33 @@
 <div class="post">
+    
     <img src="<?= $post['profilepath'] ?>" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+    
+            <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
+            <?php
+            // if sid and stitle are not set, then do not display the sublueddit
+            if (isset($post['sid']) && isset($post['stitle'])) {
+                ?>
+                in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
+                <?php
+            }
+            ?>
+        
+    
     <div class="content">
-        <span class="post-title">
-            <?= $post['title'] ?>
+        <span class="post-title mt-2">
+            <a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>"><?= $post['title'] ?></a>
+      
         </span>
+        
         <span class="post-text">
             <?= $post['content'] ?>
         </span>
         <?php
         // if link is a picture
-        if ($post['link'] != null && (strpos($post['link'], '.jpg') !== false || strpos($post['link'], '.png') !== false)) {
+        if ($post['link'] != null && (strpos($post['link'], '.jpg') !== false || strpos($post['link'], '.png') !== false || strpos($post['link'], '.webp') !== false)) {
             ?>
             <span class="post-link">
-                <img src="<?= $post['link'] ?>" alt="post image" width="100%" height="auto" />
+                <a target="_blank" href="<?= $post['link'] ?>" data-fancybox class="text-muted"><img src="<?= $post['link'] ?>" alt="post image" width="100%" height="auto" /></a>
             </span>
             <?php
         } else if ($post['link'] != null) {
@@ -23,6 +38,22 @@
             <?php
         }
         ?>
+
+
+<?php
+        // if link is a video
+        if ($post['link'] != null && (strpos($post['link'], '.mp4') !== false || strpos($post['link'], '.mpeg') !== false || strpos($post['link'], '.ogg') !== false)) {
+            ?>
+            <span class="post-link">
+                 <video controls>
+  <source src="<?= $post['link'] ?>" type="video/mp4">
+</video> 
+            </span>
+            <?php
+        
+        }
+        ?>
+
         <div id="<?= $post['pid'] ?>" class="upvotes fs-6">
             <form method="post" action="upvotes.php">
                 <input type="hidden" name="pid" value="<?= $post['pid'] ?>">
@@ -40,17 +71,7 @@
                     name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
             </form>
         </div>
-        <p>Posted by
-            <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
-            <?php
-            // if sid and stitle are not set, then do not display the sublueddit
-            if (isset($post['sid']) && isset($post['stitle'])) {
-                ?>
-                in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
-                <?php
-            }
-            ?>
-        </p>
+        
 
 
         <!-- Remove Post-->
@@ -60,5 +81,5 @@
             </a>
         <?php } ?>
     </div>
-    <div class="icon"><a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>">→</a></div>
+    
 </div>

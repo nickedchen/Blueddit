@@ -4,6 +4,7 @@
 <html lang="en" class="home">
 
 <head>
+
   <?php include 'include/head.php';
   $pid = $_GET['pid'];
   $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -98,9 +99,19 @@
           <div class="post mt-4">
 
             <img src="<?= $post['profilepath'] ?>" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+             
+                <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
+                <?php
+                // if sid and stitle are not set, then do not display the sublueddit
+                if (isset($post['sid']) && isset($post['stitle'])) {
+                  ?>
+                  in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
+                  <?php
+                }
+                ?>
             <div class="content">
 
-              <span class="post-title">
+              <span class="post-title mt-2">
                 <?= $post['title'] ?>
               </span>
 
@@ -110,10 +121,10 @@
 
               <?php
               // if link is a picture
-              if ($post['link'] != null && (strpos($post['link'], '.jpg') !== false || strpos($post['link'], '.png') !== false)) {
+              if ($post['link'] != null && (strpos($post['link'], '.jpg') !== false || strpos($post['link'], '.png') !== false || strpos($post['link'], '.webp') !== false)) {
                 ?>
                 <span class="post-link">
-                  <img src="<?= $post['link'] ?>" alt="post image" width="70%" height="auto" />
+                  <a target="_blank" href="<?= $post['link'] ?>" data-fancybox class="text-muted"><img src="<?= $post['link'] ?>" alt="post image" width="70%" height="auto" /></a>
                 </span>
               <?php } else if ($post['link'] != null) { ?>
                   <span class="post-link">
@@ -122,6 +133,16 @@
                     </a>
                   </span>
               <?php } ?>
+
+
+              <?php
+              // if link is a video
+              if ($post['link'] != null && (strpos($post['link'], '.mp4') !== false || strpos($post['link'], '.mpeg') !== false || strpos($post['link'], '.ogg') !== false)) {
+                ?>
+                <span class="post-link">
+                  <video controls><source src="<?= $post['link'] ?>" type="video/mp4"></video>
+                </span>
+              <?php  } ?>
 
               <div id="<?= $post['pid'] ?>" class="upvotes fs-6">
                 <form method="post" action="upvotes.php">
@@ -141,17 +162,7 @@
                 </form>
               </div>
 
-              <p>Posted by
-                <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
-                <?php
-                // if sid and stitle are not set, then do not display the sublueddit
-                if (isset($post['sid']) && isset($post['stitle'])) {
-                  ?>
-                  in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
-                  <?php
-                }
-                ?>
-              </p>
+              
 
               <div class="d-flex flex-row">
 
@@ -177,9 +188,10 @@
             <div class="post mt-4 comment" id = "<?= $comment['cid'] ?>">
               <img src="<?= $comment['comment_profilepath'] ?>" alt="ppl" width="40" height="40"
                 class="rounded-circle me-2" />
+                 <a class="text-info" href="publicProfile.php?userid=<?= $comment['comment_userid'] ?>"><?= $comment['comment_username'] ?></a>
               <div class="content" id = "content<?= $comment['cid'] ?>">
 
-                <span class="post-text fs-5 fw-600">
+                <span class="post-text fs-6 mt-2 mb-2 fw-600">
                   <?= $comment['comment_content'] ?>
                 </span>
 
@@ -201,9 +213,6 @@
                   </form>
                 </div>
 
-                <p>Posted by
-                  <a class="text-info" href="publicProfile.php?userid=<?= $comment['comment_userid'] ?>"><?= $comment['comment_username'] ?></a>
-                </p>
 
                 <!-- if the comment user is the current user, then display edit and delete buttons -->
                 <div class="d-flex flex-row">
