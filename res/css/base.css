@@ -4,9 +4,9 @@ body {
 }
 
 body {
-  font-size: 14px;
+  font-size: 1rem;
   text-align: left;
-  margin: 2em;
+  margin: 1em;
 }
 
 /* dark mode */
@@ -85,11 +85,11 @@ button span {
 }
 
 .post {
-  display: flex;
+  display: block;
   flex-direction: row;
   align-items: flex-start;
-  padding: 2em;
-  gap: 1em;
+  padding: 1em;
+  gap: 0em;
   border-radius: 20px;
   margin-bottom: 2em;
 }
@@ -99,7 +99,7 @@ button span {
 }
 
 .post-title {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.1em;
 }
