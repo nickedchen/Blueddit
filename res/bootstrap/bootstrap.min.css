@@ -1,38 +1,3 @@
-@font-face {
-  font-family: 'InterDisplay var';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/res/font/font-files/InterDisplay-roman.var.woff2') format('woff2');
-  font-named-instance: 'Regular';
-}
-
-@font-face {
-  font-family: 'InterDisplay var';
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/res/font/font-files/InterDisplay-roman.var.woff2') format('woff2');
-  font-named-instance: 'Italic';
-}
-
-@font-face {
-  font-family: 'Inter var';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/res/font/font-files/Inter-roman.var.woff2') format('woff2');
-  font-named-instance: 'Regular';
-}
-
-@font-face {
-  font-family: 'Inter var';
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('/res/font/font-files/Inter-roman.var.woff2') format('woff2');
-  font-named-instance: 'Italic';
-}
 
 @charset "UTF-8"; /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
@@ -62,11 +27,9 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-font-sans-serif: "InterDisplay var", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --bs-gutter-x:0px;
+
+  --bs-font-sans-serif: Nunito , sans-serif !important;
   --bs-gradient: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.15),
@@ -618,7 +581,7 @@ progress {
   }
 }
 .row {
-  --bs-gutter-x: 1.5rem;
+  --bs-gutter-x: 0rem;
   --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
