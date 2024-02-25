@@ -99,9 +99,19 @@
           <div class="post mt-4">
 
             <img src="<?= $post['profilepath'] ?>" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+             
+                <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
+                <?php
+                // if sid and stitle are not set, then do not display the sublueddit
+                if (isset($post['sid']) && isset($post['stitle'])) {
+                  ?>
+                  in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
+                  <?php
+                }
+                ?>
             <div class="content">
 
-              <span class="post-title">
+              <span class="post-title mt-2">
                 <?= $post['title'] ?>
               </span>
 
@@ -152,17 +162,7 @@
                 </form>
               </div>
 
-              <p>Posted by
-                <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
-                <?php
-                // if sid and stitle are not set, then do not display the sublueddit
-                if (isset($post['sid']) && isset($post['stitle'])) {
-                  ?>
-                  in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
-                  <?php
-                }
-                ?>
-              </p>
+              
 
               <div class="d-flex flex-row">
 
@@ -188,9 +188,10 @@
             <div class="post mt-4 comment" id = "<?= $comment['cid'] ?>">
               <img src="<?= $comment['comment_profilepath'] ?>" alt="ppl" width="40" height="40"
                 class="rounded-circle me-2" />
+                 <a class="text-info" href="publicProfile.php?userid=<?= $comment['comment_userid'] ?>"><?= $comment['comment_username'] ?></a>
               <div class="content" id = "content<?= $comment['cid'] ?>">
 
-                <span class="post-text fs-5 fw-600">
+                <span class="post-text fs-6 mt-2 mb-2 fw-600">
                   <?= $comment['comment_content'] ?>
                 </span>
 
@@ -212,9 +213,6 @@
                   </form>
                 </div>
 
-                <p>Posted by
-                  <a class="text-info" href="publicProfile.php?userid=<?= $comment['comment_userid'] ?>"><?= $comment['comment_username'] ?></a>
-                </p>
 
                 <!-- if the comment user is the current user, then display edit and delete buttons -->
                 <div class="d-flex flex-row">

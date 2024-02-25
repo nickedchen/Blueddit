@@ -1,9 +1,24 @@
 <div class="post">
+    
     <img src="<?= $post['profilepath'] ?>" alt="ppl" width="40" height="40" class="rounded-circle me-2" />
+    
+            <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
+            <?php
+            // if sid and stitle are not set, then do not display the sublueddit
+            if (isset($post['sid']) && isset($post['stitle'])) {
+                ?>
+                in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
+                <?php
+            }
+            ?>
+        
+    
     <div class="content">
-        <span class="post-title">
-            <?= $post['title'] ?>
+        <span class="post-title mt-2">
+            <a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>"><?= $post['title'] ?></a>
+      
         </span>
+        
         <span class="post-text">
             <?= $post['content'] ?>
         </span>
@@ -56,17 +71,7 @@
                     name="vote" value="&downarrow;" onclick="markArrowClickedDown(this)" />
             </form>
         </div>
-        <p>Posted by
-            <a class="text-info" href="publicProfile.php?userid=<?= $post['userid'] ?>"><?= $post['username'] ?></a>
-            <?php
-            // if sid and stitle are not set, then do not display the sublueddit
-            if (isset($post['sid']) && isset($post['stitle'])) {
-                ?>
-                in <a class="text-muted" href="sublueddit.php?sid=<?= $post['sid'] ?>">b/<?= $post['stitle'] ?></a>
-                <?php
-            }
-            ?>
-        </p>
+        
 
 
         <!-- Remove Post-->
@@ -76,5 +81,5 @@
             </a>
         <?php } ?>
     </div>
-    <div class="icon"><a class="text-dark" href="post.php?pid=<?= $post['pid'] ?>">→</a></div>
+    
 </div>
